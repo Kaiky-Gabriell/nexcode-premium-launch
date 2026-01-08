@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Globe, ShoppingCart, Layout, Settings, Cpu } from "lucide-react";
+import { Globe, Layout, Settings, Cpu } from "lucide-react";
 import { InteractiveImageAccordion } from "@/components/ui/interactive-image-accordion";
 
 const services = [
@@ -16,13 +16,6 @@ const services = [
     description: "Presença digital profissional que transmite credibilidade e posiciona sua marca no mercado.",
     features: ["Design exclusivo", "CMS integrado", "Performance otimizada"],
     imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-  },
-  {
-    icon: ShoppingCart,
-    title: "E-commerce",
-    description: "Lojas virtuais completas, seguras e prontas para escalar suas vendas online.",
-    features: ["Checkout otimizado", "Gestão de estoque", "Integrações de pagamento"],
-    imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
   },
   {
     icon: Settings,
