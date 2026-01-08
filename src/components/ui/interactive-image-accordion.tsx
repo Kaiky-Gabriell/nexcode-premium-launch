@@ -27,7 +27,7 @@ const AccordionItem = ({ item, isActive, onInteraction, isMobile }: AccordionIte
         transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
         rounded-xl sm:rounded-2xl
         ${isMobile 
-          ? isActive ? 'h-[280px]' : 'h-[70px]'
+          ? isActive ? 'h-[320px]' : 'h-[72px]'
           : `${isActive ? 'flex-[4]' : 'flex-1'} min-w-[60px] h-[450px]`
         }
         ${isMobile ? 'w-full' : ''}
@@ -37,7 +37,14 @@ const AccordionItem = ({ item, isActive, onInteraction, isMobile }: AccordionIte
       <img
         src={item.imageUrl}
         alt={item.title}
-        className="absolute inset-0 w-full h-full object-cover"
+        className={`
+          absolute w-full h-full object-cover
+          transition-all duration-500
+          ${isMobile 
+            ? isActive ? 'inset-0' : 'inset-0 opacity-50' 
+            : 'inset-0'
+          }
+        `}
         loading="lazy"
         onError={(e) => { 
           e.currentTarget.onerror = null; 
@@ -45,18 +52,31 @@ const AccordionItem = ({ item, isActive, onInteraction, isMobile }: AccordionIte
         }}
       />
       {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+      <div className={`
+        absolute inset-0 transition-all duration-500
+        ${isMobile && !isActive 
+          ? 'bg-black/70' 
+          : 'bg-gradient-to-t from-black/80 via-black/40 to-black/20'
+        }
+      `} />
 
       {/* Caption Text */}
       <div
         className={`
-          absolute bottom-0 left-0 right-0 p-4 sm:p-6
+          absolute left-0 right-0 p-4 sm:p-6
           transition-all duration-500 ease-out
-          ${isActive ? 'opacity-100 translate-y-0' : 'opacity-70'}
+          ${isMobile 
+            ? isActive ? 'bottom-0' : 'top-1/2 -translate-y-1/2'
+            : 'bottom-0'
+          }
+          ${isActive ? 'opacity-100' : 'opacity-90'}
         `}
       >
-        <div className="flex items-center gap-3 mb-2 sm:mb-3">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+        <div className={`
+          flex items-center gap-3
+          ${isActive ? 'mb-2 sm:mb-3' : 'mb-0'}
+        `}>
+          <div className="w-9 h-9 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0">
             <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
           <h3 className="font-poppins font-bold text-lg sm:text-xl text-white">
@@ -66,7 +86,7 @@ const AccordionItem = ({ item, isActive, onInteraction, isMobile }: AccordionIte
         
         <div className={`
           transition-all duration-500 overflow-hidden
-          ${isActive ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}
+          ${isActive ? 'max-h-48 opacity-100 mt-2' : 'max-h-0 opacity-0 mt-0'}
         `}>
           <p className="font-montserrat text-white/80 text-sm mb-3 sm:mb-4 leading-relaxed">
             {item.description}
