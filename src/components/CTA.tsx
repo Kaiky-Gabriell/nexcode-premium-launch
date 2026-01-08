@@ -1,8 +1,18 @@
-import { useEffect, useRef } from "react";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { MessageCircle, Send } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const CTA = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const { toast } = useToast();
+  
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    telefone: "",
+    projeto: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,6 +31,53 @@ const CTA = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validação básica
+    if (!formData.nome.trim() || !formData.email.trim() || !formData.telefone.trim()) {
+      toast({
+        title: "Campos obrigatórios",
+        description: "Por favor, preencha todos os campos obrigatórios.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    // Formatar mensagem para WhatsApp
+    const mensagem = `🚀 *Nova Solicitação de Call*
+
+👤 *Nome:* ${formData.nome.trim()}
+📧 *Email:* ${formData.email.trim()}
+📱 *Telefone:* ${formData.telefone.trim()}
+💡 *Sobre o Projeto:* ${formData.projeto.trim() || "Não informado"}
+
+_Enviado pelo site NEXCODE_`;
+
+    // Codificar mensagem para URL
+    const mensagemCodificada = encodeURIComponent(mensagem);
+    
+    // Número do WhatsApp (substitua pelo seu número)
+    const numeroWhatsApp = "5511999999999";
+    
+    // Abrir WhatsApp com a mensagem
+    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`, "_blank");
+
+    toast({
+      title: "Redirecionando para WhatsApp",
+      description: "Complete o envio da mensagem no WhatsApp.",
+    });
+
+    setIsSubmitting(false);
+  };
 
   return (
     <section ref={sectionRef} id="contato" className="section-padding bg-primary text-primary-foreground relative overflow-hidden">
@@ -45,25 +102,58 @@ const CTA = () => {
             podemos acelerar seu time-to-market.
           </p>
           
-          <div className="reveal flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4">
-            <a 
-              href="https://wa.me/5511999999999" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-primary-foreground text-primary font-poppins font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl group min-h-[48px]"
+          {/* Formulário */}
+          <form onSubmit={handleSubmit} className="reveal max-w-xl mx-auto space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input
+                type="text"
+                name="nome"
+                placeholder="Seu nome *"
+                value={formData.nome}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3.5 bg-primary-foreground/10 border border-primary-foreground/20 rounded-full text-primary-foreground placeholder:text-primary-foreground/50 font-montserrat focus:outline-none focus:border-primary-foreground/40 transition-colors"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Seu email *"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3.5 bg-primary-foreground/10 border border-primary-foreground/20 rounded-full text-primary-foreground placeholder:text-primary-foreground/50 font-montserrat focus:outline-none focus:border-primary-foreground/40 transition-colors"
+                required
+              />
+            </div>
+            
+            <input
+              type="tel"
+              name="telefone"
+              placeholder="Seu telefone/WhatsApp *"
+              value={formData.telefone}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3.5 bg-primary-foreground/10 border border-primary-foreground/20 rounded-full text-primary-foreground placeholder:text-primary-foreground/50 font-montserrat focus:outline-none focus:border-primary-foreground/40 transition-colors"
+              required
+            />
+            
+            <textarea
+              name="projeto"
+              placeholder="Conte um pouco sobre seu projeto (opcional)"
+              value={formData.projeto}
+              onChange={handleInputChange}
+              rows={3}
+              className="w-full px-4 py-3.5 bg-primary-foreground/10 border border-primary-foreground/20 rounded-2xl text-primary-foreground placeholder:text-primary-foreground/50 font-montserrat focus:outline-none focus:border-primary-foreground/40 transition-colors resize-none"
+            />
+            
+            <button 
+              type="submit"
+              disabled={isSubmitting}
+              className="inline-flex items-center justify-center w-full px-6 sm:px-8 py-3.5 sm:py-4 bg-primary-foreground text-primary font-poppins font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl group min-h-[48px] disabled:opacity-70 disabled:cursor-not-allowed"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
-              Agendar call
-            </a>
-            
-            <a 
-              href="mailto:contato@nexcode.com.br"
-              className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border-2 border-primary-foreground text-primary-foreground font-poppins font-semibold rounded-full transition-all duration-300 hover:bg-primary-foreground hover:text-primary hover:scale-105 group min-h-[48px]"
-            >
-              Enviar briefing
-              <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </a>
-          </div>
+              {isSubmitting ? "Enviando..." : "Agendar call via WhatsApp"}
+              <Send className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </form>
           
           {/* Quick info */}
           <div className="reveal mt-8 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 pt-8 sm:pt-16 border-t border-primary-foreground/10">
