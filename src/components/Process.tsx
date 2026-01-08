@@ -38,15 +38,11 @@ const steps: Step[] = [
 const Process = () => {
   const timelineData = steps.map((step) => ({
     title: step.title,
+    icon: <step.icon className="w-6 h-6 text-primary" />,
     content: (
-      <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-12 h-12 bg-primary-foreground rounded-full flex items-center justify-center">
-          <step.icon className="w-6 h-6 text-primary" />
-        </div>
-        <p className="font-montserrat text-base text-primary-foreground/70 leading-relaxed">
-          {step.description}
-        </p>
-      </div>
+      <p className="font-montserrat text-base text-primary-foreground/70 leading-relaxed">
+        {step.description}
+      </p>
     ),
   }));
 
