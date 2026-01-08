@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative overflow-visible sm:overflow-hidden bg-background pt-20 pb-8 sm:pt-0 sm:pb-0 sm:min-h-screen sm:flex sm:items-center sm:justify-center">
+    <section className="relative overflow-visible sm:overflow-hidden bg-background pt-6 pb-8 sm:pt-0 sm:pb-0 sm:min-h-screen sm:flex sm:items-center sm:justify-center">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-nexcode-white via-nexcode-white to-nexcode-gray/20" />
       
@@ -12,6 +12,11 @@ const Hero = () => {
       
       <div className="container-custom relative z-10 text-center">
         <div className="max-w-5xl mx-auto">
+          {/* Mobile Logo - visible only on mobile */}
+          <a href="#" className="sm:hidden inline-block font-poppins font-black text-2xl text-foreground mb-6 opacity-0 animate-fade-up">
+            NEXCODE
+          </a>
+          
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-secondary rounded-full mb-4 sm:mb-8 opacity-0 animate-fade-up">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full animate-pulse-slow" />
