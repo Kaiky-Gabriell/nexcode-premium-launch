@@ -9,38 +9,38 @@ import {
 const projects = [
   {
     title: "TechFlow SaaS",
-    category: "Sistema Web",
-    description: "Plataforma de gestão de projetos com dashboard em tempo real",
+    category: "Plataforma SaaS",
+    description: "Dashboard de gestão de projetos com analytics em tempo real",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
   },
   {
     title: "Luxe Commerce",
-    category: "E-commerce",
-    description: "Loja virtual premium para marca de moda",
+    category: "MVP",
+    description: "Marketplace de moda com checkout otimizado para conversão",
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
   },
   {
     title: "FinanceHub",
     category: "Landing Page",
-    description: "Página de captação para fintech com alta conversão",
+    description: "Página de captação para fintech com 12% de conversão",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
   },
   {
     title: "Studio Arch",
-    category: "Site Institucional",
-    description: "Site elegante para escritório de arquitetura",
+    category: "Website",
+    description: "Presença digital premium para escritório de arquitetura",
     image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop",
   },
   {
     title: "AutoTask AI",
     category: "Automação",
-    description: "Sistema de automação com inteligência artificial",
+    description: "Sistema de workflows com IA que economiza 40h/mês",
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop",
   },
   {
     title: "GreenLife",
-    category: "E-commerce",
-    description: "Marketplace sustentável com gestão completa",
+    category: "Plataforma",
+    description: "Marketplace B2B sustentável com gestão de fornecedores",
     image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
   },
 ];
@@ -102,16 +102,16 @@ const Portfolio = () => {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16 lg:mb-20">
           <span className="reveal font-montserrat text-sm sm:text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
-            Portfólio
+            Cases
           </span>
           <h2 className="reveal font-poppins font-black text-[2.5rem] leading-[1.05] sm:text-4xl md:text-5xl lg:text-6xl text-foreground sm:leading-tight mb-3 sm:mb-6">
-            Projetos que
+            Startups que
             <br />
-            <span className="text-gradient">falam por nós.</span>
+            <span className="text-gradient">já escalaram.</span>
           </h2>
           <p className="reveal font-montserrat text-base sm:text-lg text-muted-foreground">
-            Uma seleção dos nossos trabalhos mais recentes. 
-            Cada projeto é uma história de sucesso.
+            Produtos digitais que geraram tração, 
+            receita e crescimento real.
           </p>
         </div>
         

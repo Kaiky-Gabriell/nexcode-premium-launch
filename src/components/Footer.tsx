@@ -13,8 +13,8 @@ const Footer = () => {
               NEXCODE
             </div>
             <p className="font-montserrat text-sm sm:text-base text-muted-foreground max-w-sm mb-5 sm:mb-6">
-              Agência premium de tecnologia. Transformamos ideias em código 
-              e código em resultados.
+              Product studio para startups. Construímos MVPs, SaaS e 
+              plataformas que escalam.
             </p>
             <div className="flex gap-3 sm:gap-4">
               <a 
@@ -77,7 +77,7 @@ const Footer = () => {
           
           {/* Serviços */}
           <div>
-            <h4 className="font-poppins font-bold text-sm sm:text-base text-foreground mb-3 sm:mb-4">Serviços</h4>
+            <h4 className="font-poppins font-bold text-sm sm:text-base text-foreground mb-3 sm:mb-4">Produtos</h4>
             <ul className="space-y-2.5 sm:space-y-3">
               <li>
                 <a href="#servicos" className="font-montserrat text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors py-1 inline-block">
@@ -86,17 +86,17 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#servicos" className="font-montserrat text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors py-1 inline-block">
-                  Sites Institucionais
+                  MVPs & SaaS
                 </a>
               </li>
               <li>
                 <a href="#servicos" className="font-montserrat text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors py-1 inline-block">
-                  E-commerce
+                  Plataformas Web
                 </a>
               </li>
               <li>
                 <a href="#servicos" className="font-montserrat text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors py-1 inline-block">
-                  Sistemas Web
+                  Automações
                 </a>
               </li>
             </ul>
