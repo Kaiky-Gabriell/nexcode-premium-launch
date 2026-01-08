@@ -65,45 +65,46 @@ const Portfolio = () => {
     <section ref={sectionRef} id="portfolio" className="section-padding bg-secondary/30">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="reveal font-montserrat text-sm uppercase tracking-widest text-muted-foreground mb-4 block">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
+          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-muted-foreground mb-3 sm:mb-4 block">
             Portfólio
           </span>
-          <h2 className="reveal font-poppins font-black text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-6">
+          <h2 className="reveal font-poppins font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-4 sm:mb-6">
             Projetos que
             <br />
             <span className="text-gradient">falam por nós.</span>
           </h2>
-          <p className="reveal font-montserrat text-lg text-muted-foreground">
+          <p className="reveal font-montserrat text-base sm:text-lg text-muted-foreground px-2 sm:px-0">
             Uma seleção dos nossos trabalhos mais recentes. 
             Cada projeto é uma história de sucesso.
           </p>
         </div>
         
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <div
               key={project.title}
               className="reveal group cursor-pointer"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="relative overflow-hidden rounded-2xl mb-6">
+              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl mb-4 sm:mb-6">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-4 right-4 w-12 h-12 bg-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                  <ArrowUpRight className="w-5 h-5 text-primary-foreground" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-500 transform sm:translate-y-4 group-hover:translate-y-0">
+                  <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
                 </div>
               </div>
               
-              <span className="font-montserrat text-sm text-muted-foreground uppercase tracking-wider">
+              <span className="font-montserrat text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">
                 {project.category}
               </span>
-              <h3 className="font-poppins font-bold text-xl text-foreground mt-2 mb-2 group-hover:text-muted-foreground transition-colors">
+              <h3 className="font-poppins font-bold text-lg sm:text-xl text-foreground mt-1.5 sm:mt-2 mb-1.5 sm:mb-2 group-hover:text-muted-foreground transition-colors">
                 {project.title}
               </h3>
               <p className="font-montserrat text-muted-foreground text-sm">

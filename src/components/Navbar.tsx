@@ -22,18 +22,30 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-xl shadow-soft py-4"
-          : "bg-transparent py-6"
+        isScrolled || isMobileMenuOpen
+          ? "bg-background/95 backdrop-blur-xl shadow-soft py-3 sm:py-4"
+          : "bg-transparent py-4 sm:py-6"
       }`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="font-poppins font-black text-2xl text-foreground">
+          <a href="#" className="font-poppins font-black text-xl sm:text-2xl text-foreground">
             NEXCODE
           </a>
 
@@ -60,7 +72,8 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden w-10 h-10 flex items-center justify-center"
+            className="md:hidden w-12 h-12 flex items-center justify-center -mr-2"
+            aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6 text-foreground" />
@@ -69,20 +82,26 @@ const Navbar = () => {
             )}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
-        <div
-          className={`md:hidden transition-all duration-500 overflow-hidden ${
-            isMobileMenuOpen ? "max-h-96 opacity-100 mt-6" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="flex flex-col gap-4 pb-6">
-            {navLinks.map((link) => (
+      {/* Mobile Navigation - Full screen overlay */}
+      <div
+        className={`md:hidden fixed inset-0 top-[60px] bg-background transition-all duration-300 ${
+          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+      >
+        <div className="container-custom py-8">
+          <div className="flex flex-col gap-1">
+            {navLinks.map((link, index) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="font-montserrat text-lg text-muted-foreground hover:text-foreground transition-colors"
+                className="font-montserrat text-lg text-muted-foreground hover:text-foreground transition-colors py-4 border-b border-border"
+                style={{ 
+                  animationDelay: isMobileMenuOpen ? `${index * 50}ms` : '0ms',
+                  animation: isMobileMenuOpen ? 'fadeUp 0.3s ease-out forwards' : 'none'
+                }}
               >
                 {link.name}
               </a>
@@ -90,7 +109,7 @@ const Navbar = () => {
             <a
               href="#contato"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="btn-primary text-center mt-4"
+              className="btn-primary text-center mt-6 w-full"
             >
               Solicitar projeto
             </a>
