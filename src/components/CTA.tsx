@@ -52,24 +52,25 @@ const CTA = () => {
 
     setIsSubmitting(true);
 
-    // Formatar mensagem para WhatsApp
-    const mensagem = `🚀 *Nova Solicitação de Call*
+    // Construir mensagem dinamicamente, omitindo campos vazios
+    const linhas: string[] = [];
+    linhas.push("New lead from Nexcode 🚀");
+    linhas.push("");
+    linhas.push(`Name: ${formData.nome.trim()}`);
+    linhas.push(`Email: ${formData.email.trim()}`);
+    linhas.push(`Phone: ${formData.telefone.trim()}`);
+    
+    if (formData.projeto.trim()) {
+      linhas.push("");
+      linhas.push("Message:");
+      linhas.push(formData.projeto.trim());
+    }
 
-👤 *Nome:* ${formData.nome.trim()}
-📧 *Email:* ${formData.email.trim()}
-📱 *Telefone:* ${formData.telefone.trim()}
-💡 *Sobre o Projeto:* ${formData.projeto.trim() || "Não informado"}
-
-_Enviado pelo site NEXCODE_`;
-
-    // Codificar mensagem para URL
+    const mensagem = linhas.join("\n");
     const mensagemCodificada = encodeURIComponent(mensagem);
     
-    // Link do WhatsApp Business
-    const whatsappLink = "https://wa.me/message/Z3CKX7WEX2ZCJ1";
-    
-    // Abrir WhatsApp com a mensagem
-    window.open(`${whatsappLink}`, "_blank");
+    // Abrir WhatsApp com a mensagem pré-preenchida
+    window.open(`https://wa.me/message/Z3CKX7WEX2ZCJ1?text=${mensagemCodificada}`, "_blank");
 
     toast({
       title: "Redirecionando para WhatsApp",
