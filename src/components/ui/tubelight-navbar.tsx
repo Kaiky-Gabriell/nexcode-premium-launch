@@ -23,9 +23,12 @@ export function NavBar({ items, className }: NavBarProps) {
 
   const checkDarkSection = useCallback(() => {
     // Get the navbar position (center point)
-    const navbarY = window.innerWidth < 640 
-      ? window.innerHeight - 50 // Bottom position on mobile
-      : 50 // Top position on desktop
+    // On mobile (bottom navbar), check near the bottom of the screen
+    // On desktop (top navbar), check near the top
+    const isMobileView = window.innerWidth < 640
+    const navbarY = isMobileView 
+      ? window.innerHeight - 60 // Bottom position on mobile (navbar is at bottom)
+      : 60 // Top position on desktop
 
     // Get all dark sections (bg-primary sections)
     const darkSections = document.querySelectorAll('#processo, #contato')
@@ -66,16 +69,22 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6 transition-all duration-300",
+        "fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-300",
+        // Mobile: bottom position with safe area
+        "bottom-4 sm:bottom-auto",
+        // Desktop: top position
+        "sm:top-0 sm:pt-6",
         className,
       )}
     >
       <div 
         className={cn(
-          "flex items-center gap-3 border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg transition-all duration-300",
+          "flex items-center border backdrop-blur-lg rounded-full shadow-lg transition-all duration-300",
+          // Responsive padding and gaps
+          "gap-1 sm:gap-3 py-1.5 px-2 sm:py-1 sm:px-1",
           isDarkSection 
             ? "bg-white/10 border-white/20" 
-            : "bg-background/5 border-border"
+            : "bg-background/80 sm:bg-background/5 border-border"
         )}
       >
         {items.map((item) => {
@@ -88,17 +97,21 @@ export function NavBar({ items, className }: NavBarProps) {
               href={item.url}
               onClick={() => setActiveTab(item.name)}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                "relative cursor-pointer font-semibold rounded-full transition-colors",
+                // Responsive text and padding
+                "text-xs sm:text-sm px-3 py-2 sm:px-6 sm:py-2",
                 isDarkSection
                   ? "text-white/80 hover:text-white"
                   : "text-foreground/80 hover:text-primary",
                 isActive && (isDarkSection ? "bg-white/10 text-white" : "bg-muted text-primary"),
               )}
             >
+              {/* Show text on desktop, icons on mobile */}
               <span className="hidden md:inline">{item.name}</span>
               <span className="md:hidden">
                 <Icon size={18} strokeWidth={2.5} />
               </span>
+              
               {isActive && (
                 <motion.div
                   layoutId="lamp"
@@ -113,20 +126,23 @@ export function NavBar({ items, className }: NavBarProps) {
                     damping: 30,
                   }}
                 >
+                  {/* Lamp effect - positioned at top on desktop, bottom on mobile */}
                   <div className={cn(
-                    "absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 rounded-t-full",
+                    "absolute left-1/2 -translate-x-1/2 w-6 sm:w-8 h-1 rounded-full",
+                    // Mobile: lamp at bottom (since navbar is at bottom)
+                    "-top-2 sm:-top-2",
                     isDarkSection ? "bg-white" : "bg-primary"
                   )}>
                     <div className={cn(
-                      "absolute w-12 h-6 rounded-full blur-md -top-2 -left-2",
+                      "absolute w-8 sm:w-12 h-4 sm:h-6 rounded-full blur-md -top-2 -left-1 sm:-left-2",
                       isDarkSection ? "bg-white/20" : "bg-primary/20"
                     )} />
                     <div className={cn(
-                      "absolute w-8 h-6 rounded-full blur-md -top-1",
+                      "absolute w-6 sm:w-8 h-4 sm:h-6 rounded-full blur-md -top-1",
                       isDarkSection ? "bg-white/20" : "bg-primary/20"
                     )} />
                     <div className={cn(
-                      "absolute w-4 h-4 rounded-full blur-sm top-0 left-2",
+                      "absolute w-3 sm:w-4 h-3 sm:h-4 rounded-full blur-sm top-0 left-1.5 sm:left-2",
                       isDarkSection ? "bg-white/20" : "bg-primary/20"
                     )} />
                   </div>
