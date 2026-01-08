@@ -1,10 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Globe, ShoppingCart, Layout, Settings, Cpu, ArrowUpRight } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
+import { Globe, ShoppingCart, Layout, Settings, Cpu } from "lucide-react";
 import { InteractiveImageAccordion } from "@/components/ui/interactive-image-accordion";
 
 const services = [
@@ -94,57 +89,9 @@ const Services = () => {
           </p>
         </div>
         
-        {/* Services Carousel - Mobile */}
-        <div className="block lg:hidden">
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-2">
-              {services.map((service, index) => (
-                <CarouselItem key={service.title} className="pl-2 basis-[85%] sm:basis-[45%]">
-                  <div
-                    className="reveal glass-card-hover p-5 group cursor-pointer h-full"
-                    style={{ transitionDelay: `${index * 100}ms` }}
-                  >
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
-                        <service.icon className="w-6 h-6 text-foreground group-hover:text-primary-foreground transition-colors duration-300" />
-                      </div>
-                      <ArrowUpRight className="w-5 h-5 text-muted-foreground opacity-100 transition-all duration-300" />
-                    </div>
-                    
-                    <h3 className="font-poppins font-bold text-xl text-foreground mb-2">
-                      {service.title}
-                    </h3>
-                    
-                    <p className="font-montserrat text-base text-muted-foreground mb-3 leading-relaxed">
-                      {service.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {service.features.map((feature) => (
-                        <span
-                          key={feature}
-                          className="font-montserrat text-xs px-2.5 py-1 bg-secondary rounded-full text-muted-foreground"
-                        >
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        </div>
-
-        {/* Interactive Image Accordion - Desktop */}
-        <div className="hidden lg:block reveal">
-          <InteractiveImageAccordion items={accordionItems} defaultActiveIndex={2} />
+        {/* Interactive Image Accordion - All screens */}
+        <div className="reveal">
+          <InteractiveImageAccordion items={accordionItems} defaultActiveIndex={0} />
         </div>
       </div>
     </section>
