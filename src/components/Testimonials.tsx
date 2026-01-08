@@ -3,6 +3,17 @@ import { Star } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Marquee } from "@/components/ui/marquee";
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
+
+const partners = [
+  { name: "Lovable", logo: "https://lovable.dev/icon.svg" },
+  { name: "Supabase", logo: "https://supabase.com/favicon/favicon-196x196.png" },
+  { name: "Cursor", logo: "https://cursor.sh/favicon.ico" },
+  { name: "Figma", logo: "https://static.figma.com/app/icon/1/favicon.svg" },
+  { name: "ChatGPT", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
+  { name: "Claude", logo: "https://claude.ai/favicon.ico" },
+  { name: "Gemini", logo: "https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" },
+];
 
 const testimonials = [
   {
@@ -168,19 +179,40 @@ const Testimonials = () => {
       </div>
       
       <div className="container-custom">
-        {/* Trust Badges */}
+        {/* Partners Section */}
         <div className="reveal mt-10 sm:mt-20 text-center">
-          <p className="font-montserrat text-[10px] sm:text-sm text-muted-foreground mb-4 sm:mb-8">
-            Empresas que confiam na Nexcode
+          <p className="font-montserrat text-sm sm:text-base text-muted-foreground mb-6 sm:mb-10">
+            Nossos Parceiros
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 lg:gap-12 opacity-40">
-            {["TechFlow", "Luxe", "FinanceHub", "Studio Arch", "GreenLife"].map((brand) => (
-              <span key={brand} className="font-poppins font-bold text-base sm:text-xl lg:text-2xl text-foreground">
-                {brand}
-              </span>
-            ))}
-          </div>
         </div>
+      </div>
+      
+      {/* Partners Infinite Slider */}
+      <div className="reveal relative">
+        <InfiniteSlider gap={48} duration={30} durationOnHover={60} className="py-4">
+          {partners.map((partner) => (
+            <div
+              key={partner.name}
+              className="flex items-center gap-3 px-4 py-2 bg-secondary/50 rounded-full hover:bg-secondary transition-colors duration-300"
+            >
+              <img
+                src={partner.logo}
+                alt={`${partner.name} logo`}
+                className="h-6 w-6 sm:h-8 sm:w-8 object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+              <span className="font-poppins font-semibold text-sm sm:text-lg text-foreground">
+                {partner.name}
+              </span>
+            </div>
+          ))}
+        </InfiniteSlider>
+        
+        {/* Gradient overlays */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/12 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-background to-transparent" />
       </div>
     </section>
   );
