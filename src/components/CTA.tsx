@@ -37,7 +37,7 @@ const CTA = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validação básica
@@ -51,6 +51,25 @@ const CTA = () => {
     }
 
     setIsSubmitting(true);
+
+    // Enviar dados para o webhook Make.com
+    try {
+      await fetch("https://hook.us2.make.com/ej9t4rfgow1psf1sc2xjjopoa4gb7l2i", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify({
+          name: formData.nome.trim(),
+          email: formData.email.trim(),
+          company: "",
+          message: formData.projeto.trim() || formData.telefone.trim(),
+        }),
+      });
+    } catch (error) {
+      console.error("Webhook error:", error);
+    }
 
     // Construir mensagem dinamicamente, omitindo campos vazios
     const linhas: string[] = [];
