@@ -6,74 +6,81 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 
+import portfolioCardapio from "@/assets/portfolio-cardapio.png";
+import portfolioAcademia from "@/assets/portfolio-academia.png";
+import portfolioAutomacoes from "@/assets/portfolio-automacoes.png";
+
 const projects = [
   {
-    title: "TechFlow SaaS",
-    category: "Plataforma SaaS",
-    description: "Dashboard de gestão de projetos com analytics em tempo real",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+    title: "Pronto Pizza",
+    category: "Cardápio Digital",
+    description: "Cardápio digital interativo para pizzaria com navegação intuitiva",
+    image: portfolioCardapio,
+    link: "https://preview--pronto-pizza.lovable.app/",
   },
   {
-    title: "Luxe Commerce",
-    category: "MVP",
-    description: "Marketplace de moda com checkout otimizado para conversão",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
-  },
-  {
-    title: "FinanceHub",
+    title: "Elevati Fit",
     category: "Landing Page",
-    description: "Página de captação para fintech com 12% de conversão",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+    description: "Landing page de alta conversão para academia de fitness",
+    image: portfolioAcademia,
+    link: "https://preview--elevati-fit-showcase.lovable.app/",
   },
   {
-    title: "Studio Arch",
-    category: "Website",
-    description: "Presença digital premium para escritório de arquitetura",
-    image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop",
+    title: "La Chapa Dash",
+    category: "Dashboard",
+    description: "Dashboard completo para gestão de lanchonete",
+    image: portfolioCardapio,
+    link: "https://preview--lachapa-dash.lovable.app/",
   },
   {
-    title: "AutoTask AI",
+    title: "String Automações",
     category: "Automação",
-    description: "Sistema de workflows com IA que economiza 40h/mês",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop",
-  },
-  {
-    title: "GreenLife",
-    category: "Plataforma",
-    description: "Marketplace B2B sustentável com gestão de fornecedores",
-    image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
+    description: "Sistema de automações e workflows para otimização de processos",
+    image: portfolioAutomacoes,
+    link: null,
   },
 ];
 
-const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => (
-  <div
-    className="reveal group cursor-pointer h-full"
-    style={{ transitionDelay: `${index * 100}ms` }}
-  >
-    <div className="relative overflow-hidden rounded-xl sm:rounded-2xl mb-3 sm:mb-6">
-      <img
-        src={project.image}
-        alt={project.title}
-        className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-110"
-        loading="lazy"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-500 transform sm:translate-y-4 group-hover:translate-y-0">
-        <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+  const handleClick = () => {
+    if (project.link) {
+      window.open(project.link, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  return (
+    <div
+      className={`reveal group h-full ${project.link ? "cursor-pointer" : "cursor-default"}`}
+      style={{ transitionDelay: `${index * 100}ms` }}
+      onClick={handleClick}
+    >
+      <div className="relative overflow-hidden rounded-xl sm:rounded-2xl mb-3 sm:mb-6">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-110"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {project.link && (
+          <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-500 transform sm:translate-y-4 group-hover:translate-y-0">
+            <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
+          </div>
+        )}
       </div>
+      
+      <span className="font-montserrat text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">
+        {project.category}
+      </span>
+      <h3 className="font-poppins font-bold text-lg sm:text-xl text-foreground mt-1.5 sm:mt-2 mb-1.5 sm:mb-2 group-hover:text-muted-foreground transition-colors">
+        {project.title}
+      </h3>
+      <p className="font-montserrat text-muted-foreground text-sm">
+        {project.description}
+      </p>
     </div>
-    
-    <span className="font-montserrat text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">
-      {project.category}
-    </span>
-    <h3 className="font-poppins font-bold text-lg sm:text-xl text-foreground mt-1.5 sm:mt-2 mb-1.5 sm:mb-2 group-hover:text-muted-foreground transition-colors">
-      {project.title}
-    </h3>
-    <p className="font-montserrat text-muted-foreground text-sm">
-      {project.description}
-    </p>
-  </div>
-);
+  );
+};
 
 const Portfolio = () => {
   const sectionRef = useRef<HTMLElement>(null);
