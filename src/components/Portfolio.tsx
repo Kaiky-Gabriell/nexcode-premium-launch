@@ -8,6 +8,7 @@ import {
 
 import portfolioCardapio from "@/assets/portfolio-cardapio.png";
 import portfolioAcademia from "@/assets/portfolio-academia.png";
+import portfolioDashboard from "@/assets/portfolio-dashboard.png";
 import portfolioAutomacoes from "@/assets/portfolio-automacoes.png";
 
 const projects = [
@@ -29,7 +30,7 @@ const projects = [
     title: "La Chapa Dash",
     category: "Dashboard",
     description: "Dashboard completo para gestão de lanchonete",
-    image: portfolioCardapio,
+    image: portfolioDashboard,
     link: "https://preview--lachapa-dash.lovable.app/",
   },
   {
