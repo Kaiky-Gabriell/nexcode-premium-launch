@@ -19,7 +19,7 @@ const Hero = () => {
           </div>
           
           {/* Main headline */}
-          <h1 className="font-poppins font-black text-[2.75rem] leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl sm:leading-tight tracking-tight text-foreground mb-4 sm:mb-8 opacity-0 animate-fade-up animation-delay-100">
+          <h1 className="font-poppins font-black text-[2.25rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl sm:leading-tight tracking-tight text-foreground mb-4 sm:mb-8 opacity-0 animate-fade-up animation-delay-100">
             Transformamos
             <br />
             <span className="text-gradient">ideias em código.</span>
