@@ -13,9 +13,11 @@ const Hero = () => {
       <div className="container-custom relative z-10 text-center">
         <div className="max-w-5xl mx-auto">
           {/* Mobile Logo - visible only on mobile */}
-          <a href="#" className="sm:hidden inline-block font-poppins font-black text-2xl text-foreground mb-6 opacity-0 animate-fade-up">
-            NEXCODE
-          </a>
+          <div className="sm:hidden mb-6">
+            <a href="#" className="inline-block font-poppins font-black text-2xl text-foreground opacity-0 animate-fade-up">
+              NEXCODE
+            </a>
+          </div>
           
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-secondary rounded-full mb-4 sm:mb-8 opacity-0 animate-fade-up">
