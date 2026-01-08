@@ -48,10 +48,10 @@ const Testimonials = () => {
       <div className="container-custom">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16 lg:mb-20">
-          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
+          <span className="reveal font-montserrat text-sm sm:text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
             Depoimentos
           </span>
-          <h2 className="reveal font-poppins font-black text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-3 sm:mb-6">
+          <h2 className="reveal font-poppins font-black text-[2.5rem] leading-[1.05] sm:text-4xl md:text-5xl lg:text-6xl text-foreground sm:leading-tight mb-3 sm:mb-6">
             O que nossos
             <br />
             <span className="text-gradient">clientes dizem.</span>
@@ -77,7 +77,7 @@ const Testimonials = () => {
               </div>
               
               {/* Content */}
-              <p className="font-montserrat text-sm sm:text-base text-foreground leading-relaxed mb-4 sm:mb-8 pr-6 sm:pr-0">
+              <p className="font-montserrat text-base sm:text-base text-foreground leading-relaxed mb-4 sm:mb-8 pr-6 sm:pr-0">
                 "{testimonial.content}"
               </p>
               

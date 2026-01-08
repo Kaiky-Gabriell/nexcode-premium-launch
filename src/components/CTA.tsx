@@ -30,17 +30,17 @@ const CTA = () => {
       
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-primary-foreground/60 mb-2 sm:mb-4 block">
+          <span className="reveal font-montserrat text-sm sm:text-sm uppercase tracking-widest text-primary-foreground/60 mb-2 sm:mb-4 block">
             Pronto para começar?
           </span>
           
-          <h2 className="reveal font-poppins font-black text-[1.75rem] sm:text-4xl md:text-5xl lg:text-7xl leading-tight mb-4 sm:mb-8">
+          <h2 className="reveal font-poppins font-black text-[2.5rem] leading-[1.05] sm:text-4xl md:text-5xl lg:text-7xl sm:leading-tight mb-4 sm:mb-8">
             Vamos transformar
             <br />
             sua ideia em realidade.
           </h2>
           
-          <p className="reveal font-montserrat text-sm sm:text-lg md:text-xl text-primary-foreground/70 mb-6 sm:mb-12 max-w-2xl mx-auto">
+          <p className="reveal font-montserrat text-base sm:text-lg md:text-xl text-primary-foreground/70 mb-6 sm:mb-12 max-w-2xl mx-auto">
             Entre em contato e receba uma proposta personalizada 
             para o seu projeto em até 24 horas.
           </p>
