@@ -99,14 +99,22 @@
     transform: translateY(-8px);
   }
 
+  /* Disable hover effects on touch devices */
+  @media (hover: none) {
+    .glass-card-hover:hover {
+      transform: none;
+    }
+  }
+
   .text-gradient {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, #000000 0%, #404040 100%);
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full transition-all duration-300 ease-out;
+    @apply inline-flex items-center justify-center px-6 py-3.5 sm:px-8 sm:py-4 bg-primary text-primary-foreground font-semibold rounded-full transition-all duration-300 ease-out;
     font-family: 'Poppins', sans-serif;
+    min-height: 48px; /* Touch target */
   }
 
   .btn-primary:hover {
@@ -115,8 +123,9 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-primary text-primary font-semibold rounded-full transition-all duration-300 ease-out;
+    @apply inline-flex items-center justify-center px-6 py-3.5 sm:px-8 sm:py-4 bg-transparent border-2 border-primary text-primary font-semibold rounded-full transition-all duration-300 ease-out;
     font-family: 'Poppins', sans-serif;
+    min-height: 48px; /* Touch target */
   }
 
   .btn-secondary:hover {
@@ -124,11 +133,11 @@
   }
 
   .section-padding {
-    @apply py-24 md:py-32 lg:py-40;
+    @apply py-16 sm:py-20 md:py-32 lg:py-40;
   }
 
   .container-custom {
-    @apply max-w-7xl mx-auto px-6 md:px-8 lg:px-12;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12;
   }
 }
 
