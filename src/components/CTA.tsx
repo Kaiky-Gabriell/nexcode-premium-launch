@@ -61,10 +61,10 @@ const CTA = () => {
         },
         mode: "no-cors",
         body: JSON.stringify({
-          name: formData.nome.trim(),
-          email: formData.email.trim(),
-          company: "",
-          message: formData.projeto.trim() || formData.telefone.trim(),
+          "Seu nome": formData.nome.trim(),
+          "Seu email": formData.email.trim(),
+          "Seu telefone/WhatsApp": formData.telefone.trim(),
+          "Conte um pouco sobre seu projeto (opcional)": formData.projeto.trim(),
         }),
       });
     } catch (error) {
