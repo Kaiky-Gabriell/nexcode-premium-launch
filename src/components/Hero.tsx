@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-background pt-20 pb-8 sm:pt-0 sm:pb-0 sm:min-h-screen sm:flex sm:items-center sm:justify-center">
+    <section className="relative overflow-visible sm:overflow-hidden bg-background pt-20 pb-8 sm:pt-0 sm:pb-0 sm:min-h-screen sm:flex sm:items-center sm:justify-center">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-nexcode-white via-nexcode-white to-nexcode-gray/20" />
       
@@ -19,7 +19,7 @@ const Hero = () => {
           </div>
           
           {/* Main headline */}
-          <h1 className="font-poppins font-black text-[2.25rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl sm:leading-tight tracking-tight text-foreground mb-4 sm:mb-8 opacity-0 animate-fade-up animation-delay-100">
+          <h1 className="font-poppins font-black text-[2.75rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl sm:leading-tight tracking-tight text-foreground mb-4 sm:mb-8 opacity-0 animate-fade-up animation-delay-100">
             Transformamos
             <br />
             <span className="text-gradient">ideias em código.</span>
