@@ -65,30 +65,30 @@ const Portfolio = () => {
     <section ref={sectionRef} id="portfolio" className="section-padding bg-secondary/30">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
-          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-muted-foreground mb-3 sm:mb-4 block">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16 lg:mb-20">
+          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
             Portfólio
           </span>
-          <h2 className="reveal font-poppins font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-4 sm:mb-6">
+          <h2 className="reveal font-poppins font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-3 sm:mb-6">
             Projetos que
             <br />
             <span className="text-gradient">falam por nós.</span>
           </h2>
-          <p className="reveal font-montserrat text-base sm:text-lg text-muted-foreground px-2 sm:px-0">
+          <p className="reveal font-montserrat text-sm sm:text-lg text-muted-foreground">
             Uma seleção dos nossos trabalhos mais recentes. 
             Cada projeto é uma história de sucesso.
           </p>
         </div>
         
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <div
               key={project.title}
               className="reveal group cursor-pointer"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl mb-4 sm:mb-6">
+              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl mb-3 sm:mb-6">
                 <img
                   src={project.image}
                   alt={project.title}

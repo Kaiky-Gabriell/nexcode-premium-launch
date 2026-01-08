@@ -59,16 +59,16 @@ const Process = () => {
     <section ref={sectionRef} id="processo" className="section-padding bg-primary text-primary-foreground">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
-          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-primary-foreground/60 mb-3 sm:mb-4 block">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16 lg:mb-20">
+          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-primary-foreground/60 mb-2 sm:mb-4 block">
             Nosso Processo
           </span>
-          <h2 className="reveal font-poppins font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 sm:mb-6">
+          <h2 className="reveal font-poppins font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-3 sm:mb-6">
             Do briefing
             <br />
             ao lançamento.
           </h2>
-          <p className="reveal font-montserrat text-base sm:text-lg text-primary-foreground/70 px-2 sm:px-0">
+          <p className="reveal font-montserrat text-sm sm:text-lg text-primary-foreground/70">
             Uma metodologia clara e eficiente para entregar 
             resultados excepcionais em cada projeto.
           </p>
@@ -82,7 +82,7 @@ const Process = () => {
           {/* Mobile: Vertical timeline */}
           <div className="lg:hidden absolute left-[2.25rem] top-0 bottom-0 w-0.5 bg-primary-foreground/10" />
           
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-8 lg:gap-4">
             {steps.map((step, index) => (
               <div
                 key={step.number}
@@ -91,17 +91,17 @@ const Process = () => {
               >
                 {/* Icon Circle */}
                 <div className="relative flex-shrink-0 lg:mb-6">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary-foreground rounded-full flex items-center justify-center relative z-10">
-                    <step.icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
+                  <div className="w-14 h-14 sm:w-20 sm:h-20 bg-primary-foreground rounded-full flex items-center justify-center relative z-10">
+                    <step.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                   </div>
-                  <span className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-7 h-7 sm:w-8 sm:h-8 bg-primary border-2 border-primary-foreground rounded-full flex items-center justify-center font-poppins font-bold text-xs">
+                  <span className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 bg-primary border-2 border-primary-foreground rounded-full flex items-center justify-center font-poppins font-bold text-[10px] sm:text-xs">
                     {step.number}
                   </span>
                 </div>
                 
                 {/* Text content */}
-                <div className="flex-1 lg:flex-none pt-1 lg:pt-0">
-                  <h3 className="font-poppins font-bold text-lg sm:text-xl mb-1 sm:mb-3">
+                <div className="flex-1 lg:flex-none pt-0.5 lg:pt-0">
+                  <h3 className="font-poppins font-bold text-base sm:text-xl mb-0.5 sm:mb-3">
                     {step.title}
                   </h3>
                   <p className="font-montserrat text-sm text-primary-foreground/70 leading-relaxed max-w-xs lg:mx-auto">
