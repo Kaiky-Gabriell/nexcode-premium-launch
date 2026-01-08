@@ -65,11 +65,11 @@ _Enviado pelo site NEXCODE_`;
     // Codificar mensagem para URL
     const mensagemCodificada = encodeURIComponent(mensagem);
     
-    // Número do WhatsApp (substitua pelo seu número)
-    const numeroWhatsApp = "5511999999999";
+    // Link do WhatsApp Business
+    const whatsappLink = "https://wa.me/message/Z3CKX7WEX2ZCJ1";
     
     // Abrir WhatsApp com a mensagem
-    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`, "_blank");
+    window.open(`${whatsappLink}`, "_blank");
 
     toast({
       title: "Redirecionando para WhatsApp",
