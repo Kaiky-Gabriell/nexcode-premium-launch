@@ -60,15 +60,15 @@ const Process = () => {
       <div className="container-custom">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16 lg:mb-20">
-          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-primary-foreground/60 mb-2 sm:mb-4 block">
+          <span className="reveal font-montserrat text-sm sm:text-sm uppercase tracking-widest text-primary-foreground/60 mb-2 sm:mb-4 block">
             Nosso Processo
           </span>
-          <h2 className="reveal font-poppins font-black text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-3 sm:mb-6">
+          <h2 className="reveal font-poppins font-black text-[2.5rem] leading-[1.05] sm:text-4xl md:text-5xl lg:text-6xl sm:leading-tight mb-3 sm:mb-6">
             Do briefing
             <br />
             ao lançamento.
           </h2>
-          <p className="reveal font-montserrat text-sm sm:text-lg text-primary-foreground/70">
+          <p className="reveal font-montserrat text-base sm:text-lg text-primary-foreground/70">
             Uma metodologia clara e eficiente para entregar 
             resultados excepcionais em cada projeto.
           </p>
@@ -101,10 +101,10 @@ const Process = () => {
                 
                 {/* Text content */}
                 <div className="flex-1 lg:flex-none pt-0.5 lg:pt-0">
-                  <h3 className="font-poppins font-bold text-base sm:text-xl mb-0.5 sm:mb-3">
+                  <h3 className="font-poppins font-bold text-lg sm:text-xl mb-0.5 sm:mb-3">
                     {step.title}
                   </h3>
-                  <p className="font-montserrat text-sm text-primary-foreground/70 leading-relaxed max-w-xs lg:mx-auto">
+                  <p className="font-montserrat text-base sm:text-sm text-primary-foreground/70 leading-relaxed max-w-xs lg:mx-auto">
                     {step.description}
                   </p>
                 </div>

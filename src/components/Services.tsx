@@ -60,15 +60,15 @@ const Services = () => {
       <div className="container-custom">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16 lg:mb-20">
-          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
+          <span className="reveal font-montserrat text-sm sm:text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
             Nossos Serviços
           </span>
-          <h2 className="reveal font-poppins font-black text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-3 sm:mb-6">
+          <h2 className="reveal font-poppins font-black text-[2.5rem] leading-[1.05] sm:text-4xl md:text-5xl lg:text-6xl text-foreground sm:leading-tight mb-3 sm:mb-6">
             Soluções completas
             <br />
             <span className="text-gradient">para seu negócio.</span>
           </h2>
-          <p className="reveal font-montserrat text-sm sm:text-lg text-muted-foreground">
+          <p className="reveal font-montserrat text-base sm:text-lg text-muted-foreground">
             Do conceito ao código, entregamos tudo que você precisa para 
             ter uma presença digital de alto impacto.
           </p>
@@ -89,11 +89,11 @@ const Services = () => {
                 <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </div>
               
-              <h3 className="font-poppins font-bold text-lg sm:text-2xl text-foreground mb-2 sm:mb-4">
+              <h3 className="font-poppins font-bold text-xl sm:text-2xl text-foreground mb-2 sm:mb-4">
                 {service.title}
               </h3>
               
-              <p className="font-montserrat text-sm sm:text-base text-muted-foreground mb-3 sm:mb-6 leading-relaxed">
+              <p className="font-montserrat text-base sm:text-base text-muted-foreground mb-3 sm:mb-6 leading-relaxed">
                 {service.description}
               </p>
               
