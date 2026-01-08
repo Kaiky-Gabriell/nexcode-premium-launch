@@ -19,32 +19,32 @@ const testimonials = [
   {
     name: "Carlos Mendes",
     username: "@carlosmendes",
-    role: "CEO, TechFlow",
-    content: "A Nexcode entregou muito além do esperado. O sistema que desenvolveram revolucionou nossa operação.",
+    role: "Founder, TechFlow",
+    content: "A Nexcode nos ajudou a lançar o MVP em 6 semanas. Hoje temos 2.000 usuários ativos e acabamos de fechar nossa seed.",
     img: "https://randomuser.me/api/portraits/men/32.jpg",
     rating: 5,
   },
   {
     name: "Marina Silva",
     username: "@marinasilva",
-    role: "Diretora, Luxe Brand",
-    content: "Nosso e-commerce ficou incrível. As vendas aumentaram 200% após o lançamento.",
+    role: "CEO, Luxe Brand",
+    content: "Triplicamos a conversão do nosso e-commerce. A equipe entende de produto, não só de código.",
     img: "https://randomuser.me/api/portraits/women/44.jpg",
     rating: 5,
   },
   {
     name: "Ricardo Santos",
     username: "@ricardosantos",
-    role: "Fundador, FinanceHub",
-    content: "Design premium e código limpo. A landing page converteu muito acima da média.",
+    role: "Founder, FinanceHub",
+    content: "Landing page com 12% de conversão. Captamos R$ 500k em leads no primeiro mês.",
     img: "https://randomuser.me/api/portraits/men/67.jpg",
     rating: 5,
   },
   {
     name: "Ana Paula Costa",
     username: "@anapaula",
-    role: "CMO, GreenLife",
-    content: "Profissionalismo impecável do início ao fim. Recomendo fortemente a Nexcode!",
+    role: "COO, GreenLife",
+    content: "Plataforma B2B robusta e escalável. Processos que levavam dias agora levam minutos.",
     img: "https://randomuser.me/api/portraits/women/68.jpg",
     rating: 5,
   },
@@ -52,31 +52,31 @@ const testimonials = [
     name: "João Pedro Lima",
     username: "@joaopedro",
     role: "CTO, AutoTask AI",
-    content: "Automações que funcionam perfeitamente. Economizamos horas de trabalho manual.",
+    content: "As automações economizam 40 horas por mês. ROI positivo já no segundo mês.",
     img: "https://randomuser.me/api/portraits/men/22.jpg",
     rating: 5,
   },
   {
     name: "Fernanda Oliveira",
     username: "@fernandaoliveira",
-    role: "Fundadora, Studio Arch",
-    content: "O site ficou elegante e moderno. Recebemos muitos elogios dos clientes!",
+    role: "Founder, Studio Arch",
+    content: "Presença digital premium que reflete a qualidade do nosso trabalho. Leads qualificados toda semana.",
     img: "https://randomuser.me/api/portraits/women/53.jpg",
     rating: 5,
   },
   {
     name: "Lucas Ferreira",
     username: "@lucasferreira",
-    role: "Diretor, TechStart",
-    content: "Parceria excepcional. A equipe entendeu perfeitamente nossa visão.",
+    role: "CEO, TechStart",
+    content: "Parceria estratégica, não apenas execução. Eles pensam junto no produto.",
     img: "https://randomuser.me/api/portraits/men/51.jpg",
     rating: 5,
   },
   {
     name: "Beatriz Almeida",
     username: "@beatrizalmeida",
-    role: "CEO, Moda Plus",
-    content: "E-commerce robusto e fácil de gerenciar. Superou todas as expectativas!",
+    role: "Founder, Moda Plus",
+    content: "Do zero ao produto em produção em 8 semanas. Qualidade de código impecável.",
     img: "https://randomuser.me/api/portraits/women/45.jpg",
     rating: 5,
   },
@@ -147,12 +147,12 @@ const Testimonials = () => {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16 lg:mb-20">
           <span className="reveal font-montserrat text-sm sm:text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
-            Depoimentos
+            Founders que confiam
           </span>
           <h2 className="reveal font-poppins font-black text-[2.5rem] leading-[1.05] sm:text-4xl md:text-5xl lg:text-6xl text-foreground sm:leading-tight mb-3 sm:mb-6">
-            O que nossos
+            Resultados reais,
             <br />
-            <span className="text-gradient">clientes dizem.</span>
+            <span className="text-gradient">startups reais.</span>
           </h2>
         </div>
       </div>
@@ -182,7 +182,7 @@ const Testimonials = () => {
         {/* Partners Section */}
         <div className="reveal mt-10 sm:mt-20 text-center">
           <p className="font-montserrat text-sm sm:text-base text-muted-foreground mb-6 sm:mb-10">
-            Nossos Parceiros
+            Tecnologias que usamos
           </p>
         </div>
       </div>

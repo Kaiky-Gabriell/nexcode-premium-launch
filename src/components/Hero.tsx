@@ -20,30 +20,30 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-secondary rounded-full mb-4 sm:mb-8 opacity-0 animate-fade-up">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full animate-pulse-slow" />
-            <span className="text-sm sm:text-sm font-montserrat text-muted-foreground">Agência Premium de Tecnologia</span>
+            <span className="text-sm sm:text-sm font-montserrat text-muted-foreground">Product Studio para Startups</span>
           </div>
           
           {/* Main headline */}
           <h1 className="font-poppins font-black text-[2.75rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl sm:leading-tight tracking-tight text-foreground mb-4 sm:mb-8 opacity-0 animate-fade-up animation-delay-100">
-            Transformamos
+            Do MVP ao produto
             <br />
-            <span className="text-gradient">ideias em código.</span>
+            <span className="text-gradient">que escala.</span>
           </h1>
           
           {/* Subheadline */}
           <p className="font-montserrat text-lg sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-12 leading-relaxed opacity-0 animate-fade-up animation-delay-200">
-            Sites, sistemas e automações que elevam sua presença digital 
-            ao próximo nível. Design premium, código limpo, resultados reais.
+            Construímos produtos digitais de alta performance para startups 
+            que querem crescer rápido e conquistar mercado.
           </p>
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 opacity-0 animate-fade-up animation-delay-300">
             <a href="#contato" className="btn-primary group w-full sm:w-auto">
-              Solicitar projeto
+              Lançar meu produto
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </a>
             <a href="#portfolio" className="btn-secondary w-full sm:w-auto">
-              Ver portfólio
+              Ver cases
             </a>
           </div>
           
@@ -51,15 +51,15 @@ const Hero = () => {
           <div className="grid grid-cols-3 gap-2 sm:gap-8 max-w-2xl mx-auto mt-8 sm:mt-20 opacity-0 animate-fade-up animation-delay-400">
             <div className="text-center">
               <div className="font-poppins font-black text-3xl sm:text-4xl md:text-5xl text-foreground">50+</div>
-              <div className="font-montserrat text-sm sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">Projetos entregues</div>
+              <div className="font-montserrat text-sm sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">Produtos lançados</div>
+            </div>
+            <div className="text-center">
+              <div className="font-poppins font-black text-3xl sm:text-4xl md:text-5xl text-foreground">3x</div>
+              <div className="font-montserrat text-sm sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">Mais rápido que in-house</div>
             </div>
             <div className="text-center">
               <div className="font-poppins font-black text-3xl sm:text-4xl md:text-5xl text-foreground">98%</div>
-              <div className="font-montserrat text-sm sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">Satisfação</div>
-            </div>
-            <div className="text-center">
-              <div className="font-poppins font-black text-3xl sm:text-4xl md:text-5xl text-foreground">5★</div>
-              <div className="font-montserrat text-sm sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">Avaliação média</div>
+              <div className="font-montserrat text-sm sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">Taxa de sucesso</div>
             </div>
           </div>
         </div>
