@@ -1,5 +1,10 @@
 import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 const projects = [
   {
@@ -39,6 +44,36 @@ const projects = [
     image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
   },
 ];
+
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => (
+  <div
+    className="reveal group cursor-pointer h-full"
+    style={{ transitionDelay: `${index * 100}ms` }}
+  >
+    <div className="relative overflow-hidden rounded-xl sm:rounded-2xl mb-3 sm:mb-6">
+      <img
+        src={project.image}
+        alt={project.title}
+        className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-110"
+        loading="lazy"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-500 transform sm:translate-y-4 group-hover:translate-y-0">
+        <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
+      </div>
+    </div>
+    
+    <span className="font-montserrat text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">
+      {project.category}
+    </span>
+    <h3 className="font-poppins font-bold text-lg sm:text-xl text-foreground mt-1.5 sm:mt-2 mb-1.5 sm:mb-2 group-hover:text-muted-foreground transition-colors">
+      {project.title}
+    </h3>
+    <p className="font-montserrat text-muted-foreground text-sm">
+      {project.description}
+    </p>
+  </div>
+);
 
 const Portfolio = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -80,37 +115,29 @@ const Portfolio = () => {
           </p>
         </div>
         
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        {/* Projects Carousel - Mobile */}
+        <div className="block sm:hidden">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2">
+              {projects.map((project, index) => (
+                <CarouselItem key={project.title} className="pl-2 basis-[85%]">
+                  <ProjectCard project={project} index={index} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+
+        {/* Projects Grid - Desktop */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {projects.map((project, index) => (
-            <div
-              key={project.title}
-              className="reveal group cursor-pointer"
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl mb-3 sm:mb-6">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-500 transform sm:translate-y-4 group-hover:translate-y-0">
-                  <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
-                </div>
-              </div>
-              
-              <span className="font-montserrat text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">
-                {project.category}
-              </span>
-              <h3 className="font-poppins font-bold text-lg sm:text-xl text-foreground mt-1.5 sm:mt-2 mb-1.5 sm:mb-2 group-hover:text-muted-foreground transition-colors">
-                {project.title}
-              </h3>
-              <p className="font-montserrat text-muted-foreground text-sm">
-                {project.description}
-              </p>
-            </div>
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
       </div>
