@@ -59,41 +59,41 @@ const Services = () => {
     <section ref={sectionRef} id="servicos" className="section-padding bg-background">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
-          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-muted-foreground mb-3 sm:mb-4 block">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16 lg:mb-20">
+          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
             Nossos Serviços
           </span>
-          <h2 className="reveal font-poppins font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-4 sm:mb-6">
+          <h2 className="reveal font-poppins font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-3 sm:mb-6">
             Soluções completas
             <br />
             <span className="text-gradient">para seu negócio.</span>
           </h2>
-          <p className="reveal font-montserrat text-base sm:text-lg text-muted-foreground px-2 sm:px-0">
+          <p className="reveal font-montserrat text-sm sm:text-lg text-muted-foreground">
             Do conceito ao código, entregamos tudo que você precisa para 
             ter uma presença digital de alto impacto.
           </p>
         </div>
         
         {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="reveal glass-card-hover p-6 sm:p-8 group cursor-pointer"
+              className="reveal glass-card-hover p-5 sm:p-8 group cursor-pointer"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="flex items-start justify-between mb-4 sm:mb-6">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-secondary rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
-                  <service.icon className="w-7 h-7 sm:w-8 sm:h-8 text-foreground group-hover:text-primary-foreground transition-colors duration-300" />
+              <div className="flex items-start justify-between mb-3 sm:mb-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-secondary rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                  <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-foreground group-hover:text-primary-foreground transition-colors duration-300" />
                 </div>
                 <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </div>
               
-              <h3 className="font-poppins font-bold text-xl sm:text-2xl text-foreground mb-3 sm:mb-4">
+              <h3 className="font-poppins font-bold text-lg sm:text-2xl text-foreground mb-2 sm:mb-4">
                 {service.title}
               </h3>
               
-              <p className="font-montserrat text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
+              <p className="font-montserrat text-xs sm:text-base text-muted-foreground mb-3 sm:mb-6 leading-relaxed">
                 {service.description}
               </p>
               

@@ -30,22 +30,22 @@ const CTA = () => {
       
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-primary-foreground/60 mb-3 sm:mb-4 block">
+          <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-primary-foreground/60 mb-2 sm:mb-4 block">
             Pronto para começar?
           </span>
           
-          <h2 className="reveal font-poppins font-black text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight mb-6 sm:mb-8">
+          <h2 className="reveal font-poppins font-black text-2xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight mb-4 sm:mb-8">
             Vamos transformar
             <br />
             sua ideia em realidade.
           </h2>
           
-          <p className="reveal font-montserrat text-base sm:text-lg md:text-xl text-primary-foreground/70 mb-8 sm:mb-12 max-w-2xl mx-auto px-2 sm:px-0">
-            Entre em contato e receba uma proposta personalizada 
+          <p className="reveal font-montserrat text-sm sm:text-lg md:text-xl text-primary-foreground/70 mb-6 sm:mb-12 max-w-2xl mx-auto">
+            Entre em contato e receba uma proposta personalizada
             para o seu projeto em até 24 horas.
           </p>
           
-          <div className="reveal flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
+          <div className="reveal flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4">
             <a 
               href="https://wa.me/5511999999999" 
               target="_blank" 
@@ -66,22 +66,22 @@ const CTA = () => {
           </div>
           
           {/* Quick info */}
-          <div className="reveal mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-10 sm:pt-16 border-t border-primary-foreground/10">
+          <div className="reveal mt-8 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 pt-8 sm:pt-16 border-t border-primary-foreground/10">
             <div className="text-center sm:text-center">
-              <div className="font-poppins font-bold text-base sm:text-lg mb-1 sm:mb-2">Resposta rápida</div>
-              <div className="font-montserrat text-sm sm:text-base text-primary-foreground/60">
+              <div className="font-poppins font-bold text-sm sm:text-lg mb-0.5 sm:mb-2">Resposta rápida</div>
+              <div className="font-montserrat text-xs sm:text-base text-primary-foreground/60">
                 Retornamos em até 2 horas úteis
               </div>
             </div>
             <div className="text-center sm:text-center">
-              <div className="font-poppins font-bold text-base sm:text-lg mb-1 sm:mb-2">Proposta gratuita</div>
-              <div className="font-montserrat text-sm sm:text-base text-primary-foreground/60">
+              <div className="font-poppins font-bold text-sm sm:text-lg mb-0.5 sm:mb-2">Proposta gratuita</div>
+              <div className="font-montserrat text-xs sm:text-base text-primary-foreground/60">
                 Orçamento detalhado sem compromisso
               </div>
             </div>
             <div className="text-center sm:text-center">
-              <div className="font-poppins font-bold text-base sm:text-lg mb-1 sm:mb-2">Reunião online</div>
-              <div className="font-montserrat text-sm sm:text-base text-primary-foreground/60">
+              <div className="font-poppins font-bold text-sm sm:text-lg mb-0.5 sm:mb-2">Reunião online</div>
+              <div className="font-montserrat text-xs sm:text-base text-primary-foreground/60">
                 Agende uma call para apresentarmos
               </div>
             </div>
