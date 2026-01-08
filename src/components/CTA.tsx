@@ -52,24 +52,6 @@ const CTA = () => {
 
     setIsSubmitting(true);
 
-    // Enviar dados para o webhook Make.com
-    try {
-      await fetch("https://hook.us2.make.com/ej9t4rfgow1psf1sc2xjjopoa4gb7l2i", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        mode: "no-cors",
-        body: JSON.stringify({
-          "Seu nome": formData.nome.trim(),
-          "Seu email": formData.email.trim(),
-          "Seu telefone/WhatsApp": formData.telefone.trim(),
-          "Conte um pouco sobre seu projeto (opcional)": formData.projeto.trim(),
-        }),
-      });
-    } catch (error) {
-      console.error("Webhook error:", error);
-    }
 
     // Construir mensagem dinamicamente, omitindo campos vazios
     const linhas: string[] = [];
