@@ -1,6 +1,5 @@
 "use client";
 import {
-  useMotionValueEvent,
   useScroll,
   useTransform,
   motion,
@@ -10,6 +9,7 @@ import React, { useEffect, useRef, useState } from "react";
 interface TimelineEntry {
   title: string;
   content: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
@@ -62,9 +62,9 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   type: "spring",
                   stiffness: 200
                 }}
-                className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-primary-foreground flex items-center justify-center"
+                className="h-12 absolute left-2 md:left-2 w-12 rounded-full bg-primary-foreground flex items-center justify-center"
               >
-                <div className="h-4 w-4 rounded-full bg-primary border border-primary-foreground/20" />
+                {item.icon || <div className="h-4 w-4 rounded-full bg-primary border border-primary-foreground/20" />}
               </motion.div>
               <motion.h3 
                 initial={{ opacity: 0, y: 20 }}
@@ -84,7 +84,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
               className="relative pl-20 pr-4 md:pl-4 w-full"
             >
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-primary-foreground">
+              <h3 className="md:hidden block text-xl mb-2 text-left font-bold text-primary-foreground">
                 {item.title}
               </h3>
               {item.content}
