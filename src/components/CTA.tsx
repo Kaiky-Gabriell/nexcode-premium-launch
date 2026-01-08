@@ -34,14 +34,14 @@ const CTA = () => {
             Pronto para começar?
           </span>
           
-          <h2 className="reveal font-poppins font-black text-2xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight mb-4 sm:mb-8">
+          <h2 className="reveal font-poppins font-black text-[1.75rem] sm:text-4xl md:text-5xl lg:text-7xl leading-tight mb-4 sm:mb-8">
             Vamos transformar
             <br />
             sua ideia em realidade.
           </h2>
           
           <p className="reveal font-montserrat text-sm sm:text-lg md:text-xl text-primary-foreground/70 mb-6 sm:mb-12 max-w-2xl mx-auto">
-            Entre em contato e receba uma proposta personalizada
+            Entre em contato e receba uma proposta personalizada 
             para o seu projeto em até 24 horas.
           </p>
           
@@ -68,20 +68,20 @@ const CTA = () => {
           {/* Quick info */}
           <div className="reveal mt-8 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 pt-8 sm:pt-16 border-t border-primary-foreground/10">
             <div className="text-center sm:text-center">
-              <div className="font-poppins font-bold text-sm sm:text-lg mb-0.5 sm:mb-2">Resposta rápida</div>
-              <div className="font-montserrat text-xs sm:text-base text-primary-foreground/60">
+              <div className="font-poppins font-bold text-base sm:text-lg mb-0.5 sm:mb-2">Resposta rápida</div>
+              <div className="font-montserrat text-sm sm:text-base text-primary-foreground/60">
                 Retornamos em até 2 horas úteis
               </div>
             </div>
             <div className="text-center sm:text-center">
-              <div className="font-poppins font-bold text-sm sm:text-lg mb-0.5 sm:mb-2">Proposta gratuita</div>
-              <div className="font-montserrat text-xs sm:text-base text-primary-foreground/60">
+              <div className="font-poppins font-bold text-base sm:text-lg mb-0.5 sm:mb-2">Proposta gratuita</div>
+              <div className="font-montserrat text-sm sm:text-base text-primary-foreground/60">
                 Orçamento detalhado sem compromisso
               </div>
             </div>
             <div className="text-center sm:text-center">
-              <div className="font-poppins font-bold text-sm sm:text-lg mb-0.5 sm:mb-2">Reunião online</div>
-              <div className="font-montserrat text-xs sm:text-base text-primary-foreground/60">
+              <div className="font-poppins font-bold text-base sm:text-lg mb-0.5 sm:mb-2">Reunião online</div>
+              <div className="font-montserrat text-sm sm:text-base text-primary-foreground/60">
                 Agende uma call para apresentarmos
               </div>
             </div>

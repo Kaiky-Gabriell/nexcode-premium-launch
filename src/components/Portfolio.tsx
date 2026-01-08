@@ -69,7 +69,7 @@ const Portfolio = () => {
           <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
             Portfólio
           </span>
-          <h2 className="reveal font-poppins font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-3 sm:mb-6">
+          <h2 className="reveal font-poppins font-black text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-3 sm:mb-6">
             Projetos que
             <br />
             <span className="text-gradient">falam por nós.</span>

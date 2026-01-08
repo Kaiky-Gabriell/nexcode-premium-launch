@@ -31,13 +31,13 @@ const About = () => {
             <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
               Quem somos
             </span>
-            <h2 className="reveal font-poppins font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-4 sm:mb-8">
+            <h2 className="reveal font-poppins font-black text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-4 sm:mb-8">
               Código que 
               <br />
               <span className="text-gradient">gera resultados.</span>
             </h2>
             <p className="reveal font-montserrat text-sm sm:text-lg text-muted-foreground leading-relaxed mb-4 sm:mb-8">
-              A Nexcode é uma agência de tecnologia focada em entregar soluções digitais
+              A Nexcode é uma agência de tecnologia focada em entregar soluções digitais 
               premium. Combinamos design de alto nível com desenvolvimento de ponta para 
               criar experiências que convertem e impressionam.
             </p>
@@ -60,7 +60,7 @@ const About = () => {
               <h3 className="font-poppins font-bold text-base sm:text-xl text-foreground mb-1.5 sm:mb-3">
                 Velocidade & Performance
               </h3>
-              <p className="font-montserrat text-xs sm:text-base text-muted-foreground">
+              <p className="font-montserrat text-sm sm:text-base text-muted-foreground">
                 Sites rápidos, código otimizado. Cada milissegundo importa para 
                 a experiência do usuário e para o SEO.
               </p>
@@ -73,7 +73,7 @@ const About = () => {
               <h3 className="font-poppins font-bold text-base sm:text-xl text-foreground mb-1.5 sm:mb-3">
                 Foco em Conversão
               </h3>
-              <p className="font-montserrat text-xs sm:text-base text-muted-foreground">
+              <p className="font-montserrat text-sm sm:text-base text-muted-foreground">
                 Não fazemos apenas sites bonitos. Criamos experiências projetadas 
                 para transformar visitantes em clientes.
               </p>
@@ -86,7 +86,7 @@ const About = () => {
               <h3 className="font-poppins font-bold text-base sm:text-xl text-foreground mb-1.5 sm:mb-3">
                 Qualidade Premium
               </h3>
-              <p className="font-montserrat text-xs sm:text-base text-muted-foreground">
+              <p className="font-montserrat text-sm sm:text-base text-muted-foreground">
                 Design refinado, atenção aos detalhes. Cada projeto é tratado 
                 como se fosse o nosso próprio.
               </p>
