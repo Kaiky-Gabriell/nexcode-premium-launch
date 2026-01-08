@@ -63,7 +63,7 @@ const Services = () => {
           <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
             Nossos Serviços
           </span>
-          <h2 className="reveal font-poppins font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-3 sm:mb-6">
+          <h2 className="reveal font-poppins font-black text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-3 sm:mb-6">
             Soluções completas
             <br />
             <span className="text-gradient">para seu negócio.</span>
@@ -93,7 +93,7 @@ const Services = () => {
                 {service.title}
               </h3>
               
-              <p className="font-montserrat text-xs sm:text-base text-muted-foreground mb-3 sm:mb-6 leading-relaxed">
+              <p className="font-montserrat text-sm sm:text-base text-muted-foreground mb-3 sm:mb-6 leading-relaxed">
                 {service.description}
               </p>
               

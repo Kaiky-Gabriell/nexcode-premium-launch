@@ -63,7 +63,7 @@ const Process = () => {
           <span className="reveal font-montserrat text-xs sm:text-sm uppercase tracking-widest text-primary-foreground/60 mb-2 sm:mb-4 block">
             Nosso Processo
           </span>
-          <h2 className="reveal font-poppins font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-3 sm:mb-6">
+          <h2 className="reveal font-poppins font-black text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-3 sm:mb-6">
             Do briefing
             <br />
             ao lançamento.
