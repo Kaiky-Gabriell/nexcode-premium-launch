@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { useRevealAnimation } from "@/hooks/useRevealAnimation";
+import { HeroBackground } from "@/components/ui/hero-background";
 
 const Hero = () => {
   const revealRef = useRevealAnimation<HTMLElement>();
@@ -9,12 +10,11 @@ const Hero = () => {
       ref={revealRef}
       className="relative overflow-visible sm:overflow-hidden bg-background pt-6 pb-8 sm:pt-0 sm:pb-0 sm:min-h-screen sm:flex sm:items-center sm:justify-center"
     >
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-nexcode-white via-nexcode-white to-nexcode-gray/20" />
+      {/* Animated mesh gradient background */}
+      <HeroBackground className="absolute inset-0 z-0" />
       
-      {/* Floating decorative elements - hidden on mobile for performance */}
-      <div className="hidden sm:block absolute top-20 right-20 w-72 h-72 bg-nexcode-gray/10 rounded-full blur-3xl animate-float" />
-      <div className="hidden sm:block absolute bottom-20 left-20 w-96 h-96 bg-nexcode-gray/10 rounded-full blur-3xl animate-float animation-delay-300" />
+      {/* Subtle overlay for text legibility */}
+      <div className="absolute inset-0 bg-white/20 z-[1]" />
       
       <div className="container-custom relative z-10 text-center">
         <div className="max-w-5xl mx-auto">
