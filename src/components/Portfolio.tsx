@@ -38,7 +38,7 @@ const projects = [
     category: "Automação",
     description: "Sistema de automações e workflows para otimização de processos",
     image: portfolioAutomacoes,
-    link: null,
+    link: "https://wa.me/message/Z3CKX7WEX2ZCJ1",
   },
 ];
 
