@@ -9,7 +9,7 @@ const Hero = () => {
     <section 
       id="hero"
       ref={revealRef}
-      className="relative overflow-visible sm:overflow-hidden bg-black pt-6 pb-8 sm:pt-0 sm:pb-0 sm:min-h-screen sm:flex sm:items-center sm:justify-center"
+      className="relative overflow-hidden bg-black min-h-screen flex flex-col items-center justify-center py-16 sm:py-0"
     >
       {/* Animated mesh gradient background */}
       <HeroBackground className="absolute inset-0 z-0" />
@@ -24,7 +24,7 @@ const Hero = () => {
         <div className="hidden sm:block absolute bottom-1/4 right-1/4 w-80 h-80 bg-gray-600/10 rounded-full blur-3xl animate-pulse [animation-delay:1000ms]" />
       </div>
       
-      <div className="container-custom relative z-10 text-center">
+      <div className="container-custom relative z-10 text-center pb-20 sm:pb-0">
         <div className="max-w-5xl mx-auto">
           {/* Mobile Logo - visible only on mobile */}
           <div className="sm:hidden mb-6">
