@@ -7,6 +7,7 @@ const Hero = () => {
 
   return (
     <section 
+      id="hero"
       ref={revealRef}
       className="relative overflow-visible sm:overflow-hidden bg-black pt-6 pb-8 sm:pt-0 sm:pb-0 sm:min-h-screen sm:flex sm:items-center sm:justify-center"
     >

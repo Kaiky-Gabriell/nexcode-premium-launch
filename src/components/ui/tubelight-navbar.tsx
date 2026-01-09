@@ -31,7 +31,7 @@ export function NavBar({ items, className }: NavBarProps) {
       : 60 // Top position on desktop
 
     // Get all dark sections (bg-primary sections)
-    const darkSections = document.querySelectorAll('#processo, #contato')
+    const darkSections = document.querySelectorAll('#hero, #processo, #contato')
     
     let isOverDark = false
     darkSections.forEach((section) => {
