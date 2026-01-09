@@ -1,10 +1,7 @@
-import { Instagram, Linkedin, Github, Mail } from "lucide-react";
-
+import { Instagram, Linkedin, Mail } from "lucide-react";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
-  return (
-    <footer className="py-8 sm:py-16 bg-background border-t border-border">
+  return <footer className="py-8 sm:py-16 bg-background border-t border-border">
       <div className="container-custom">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-12 mb-8 sm:mb-16">
           {/* Brand */}
@@ -17,34 +14,12 @@ const Footer = () => {
               plataformas que escalam.
             </p>
             <div className="flex gap-3 sm:gap-4">
-              <a 
-                href="#" 
-                className="w-11 h-11 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                aria-label="Instagram"
-              >
+              <a href="#" className="w-11 h-11 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a 
-                href="#" 
-                className="w-11 h-11 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a 
-                href="#" 
-                className="w-11 h-11 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                aria-label="Github"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a 
-                href="mailto:contato@nexcode.com.br" 
-                className="w-11 h-11 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                aria-label="Email"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
+              
+              
+              
             </div>
           </div>
           
@@ -113,8 +88,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
