@@ -13,8 +13,8 @@ export const HeroBackground = ({ className }: HeroBackgroundProps) => {
   return (
     <MeshGradient
       className={className}
-      speed={isMobile ? 0.08 : 0.12}
-      colors={['#ffffff', '#f5f5f5', '#e8e8e8', '#d9d9d9']}
+      speed={isMobile ? 0.08 : 0.15}
+      colors={['#000000', '#1a1a1a', '#333333', '#4a4a4a']}
       distortion={0.8}
       swirl={0.6}
       style={{
