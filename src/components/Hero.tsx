@@ -1,8 +1,14 @@
 import { ArrowRight } from "lucide-react";
+import { useRevealAnimation } from "@/hooks/useRevealAnimation";
 
 const Hero = () => {
+  const revealRef = useRevealAnimation<HTMLElement>();
+
   return (
-    <section className="relative overflow-visible sm:overflow-hidden bg-background pt-6 pb-8 sm:pt-0 sm:pb-0 sm:min-h-screen sm:flex sm:items-center sm:justify-center">
+    <section 
+      ref={revealRef}
+      className="relative overflow-visible sm:overflow-hidden bg-background pt-6 pb-8 sm:pt-0 sm:pb-0 sm:min-h-screen sm:flex sm:items-center sm:justify-center"
+    >
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-nexcode-white via-nexcode-white to-nexcode-gray/20" />
       
