@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState, useCallback } from "react";
-import { ArrowUpRight, ChevronUp, ChevronDown } from "lucide-react";
-import { motion, type PanInfo } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import ReactLenis from "lenis/react";
 
 import portfolioCardapio from "@/assets/portfolio-cardapio.png";
 import portfolioAcademia from "@/assets/portfolio-academia.png";
@@ -42,237 +43,145 @@ const projects = [
   },
 ];
 
-// Vertical Image Stack Component
-const VerticalImageStack = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const lastNavigationTime = useRef(0);
-  const navigationCooldown = 400;
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const navigate = useCallback((newDirection: number) => {
-    const now = Date.now();
-    if (now - lastNavigationTime.current < navigationCooldown) return;
-    lastNavigationTime.current = now;
-
-    setCurrentIndex((prev) => {
-      if (newDirection > 0) {
-        return prev === projects.length - 1 ? 0 : prev + 1;
-      }
-      return prev === 0 ? projects.length - 1 : prev - 1;
-    });
-  }, []);
-
-  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    const threshold = 50;
-    if (info.offset.y < -threshold) {
-      navigate(1);
-    } else if (info.offset.y > threshold) {
-      navigate(-1);
+// Desktop Project Card Component
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+  const handleClick = () => {
+    if (project.link) {
+      window.open(project.link, "_blank", "noopener,noreferrer");
     }
   };
-
-  const handleWheel = useCallback(
-    (e: WheelEvent) => {
-      if (Math.abs(e.deltaY) > 30) {
-        if (e.deltaY > 0) {
-          navigate(1);
-        } else {
-          navigate(-1);
-        }
-      }
-    },
-    [navigate]
-  );
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const wheelHandler = (e: WheelEvent) => {
-      e.preventDefault();
-      handleWheel(e);
-    };
-
-    container.addEventListener("wheel", wheelHandler, { passive: false });
-    return () => container.removeEventListener("wheel", wheelHandler);
-  }, [handleWheel]);
-
-  const getCardStyle = (index: number) => {
-    const total = projects.length;
-    let diff = index - currentIndex;
-    if (diff > total / 2) diff -= total;
-    if (diff < -total / 2) diff += total;
-
-    // Responsive values - smaller on mobile
-    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-
-    if (diff === 0) {
-      return { y: 0, scale: 1, opacity: 1, zIndex: 5, rotateX: 0 };
-    } else if (diff === -1) {
-      return { y: isMobile ? -90 : -140, scale: 0.85, opacity: 0.7, zIndex: 4, rotateX: 6 };
-    } else if (diff === -2) {
-      return { y: isMobile ? -150 : -240, scale: 0.72, opacity: 0.4, zIndex: 3, rotateX: 12 };
-    } else if (diff === 1) {
-      return { y: isMobile ? 90 : 140, scale: 0.85, opacity: 0.7, zIndex: 4, rotateX: -6 };
-    } else if (diff === 2) {
-      return { y: isMobile ? 150 : 240, scale: 0.72, opacity: 0.4, zIndex: 3, rotateX: -12 };
-    } else {
-      return { y: diff > 0 ? 350 : -350, scale: 0.6, opacity: 0, zIndex: 0, rotateX: diff > 0 ? -15 : 15 };
-    }
-  };
-
-  const isVisible = (index: number) => {
-    const total = projects.length;
-    let diff = index - currentIndex;
-    if (diff > total / 2) diff -= total;
-    if (diff < -total / 2) diff += total;
-    return Math.abs(diff) <= 2;
-  };
-
-  const handleProjectClick = (link: string | null) => {
-    if (link) {
-      window.open(link, "_blank", "noopener,noreferrer");
-    }
-  };
-
-  const currentProject = projects[currentIndex];
 
   return (
-    <div className="relative flex flex-col items-center">
-      {/* Stack Container */}
-      <div
-        ref={containerRef}
-        className="relative flex min-h-[420px] sm:min-h-[500px] md:min-h-[550px] w-full items-center justify-center overflow-hidden"
-        style={{ perspective: "1200px" }}
-      >
-        {/* Ambient glow */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div
-            className="h-[250px] w-[250px] sm:h-[350px] sm:w-[350px] rounded-full opacity-20 blur-3xl"
-            style={{ background: "hsl(var(--primary) / 0.4)" }}
-          />
-        </div>
-
-        {/* Card Stack */}
-        <div className="relative h-[260px] w-[220px] sm:h-[320px] sm:w-[280px] md:h-[380px] md:w-[340px] lg:h-[420px] lg:w-[380px]">
-          {projects.map((project, index) => {
-            if (!isVisible(index)) return null;
-            const style = getCardStyle(index);
-            const isCurrent = index === currentIndex;
-
-            return (
-              <motion.div
-                key={project.id}
-                className="absolute inset-0 cursor-grab active:cursor-grabbing"
-                animate={{
-                  y: style.y,
-                  scale: style.scale,
-                  opacity: style.opacity,
-                  rotateX: style.rotateX,
-                  zIndex: style.zIndex,
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 30,
-                  mass: 1,
-                }}
-                drag={isCurrent ? "y" : false}
-                dragConstraints={{ top: 0, bottom: 0 }}
-                dragElastic={0.1}
-                onDragEnd={isCurrent ? handleDragEnd : undefined}
-                style={{ transformStyle: "preserve-3d" }}
-                onClick={() => isCurrent && handleProjectClick(project.link)}
-              >
-                <div className="group relative h-full w-full overflow-hidden rounded-2xl sm:rounded-3xl bg-secondary shadow-2xl ring-1 ring-white/10">
-                  {/* Inner glow */}
-                  <div
-                    className="absolute inset-0 rounded-2xl sm:rounded-3xl opacity-40 pointer-events-none z-10"
-                    style={{
-                      background: "linear-gradient(135deg, hsl(var(--foreground) / 0.08) 0%, transparent 50%)",
-                    }}
-                  />
-
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    draggable={false}
-                  />
-
-                  {/* Bottom gradient overlay */}
-                  <div
-                    className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
-                    style={{
-                      background: "linear-gradient(to top, hsl(var(--background) / 0.95) 0%, hsl(var(--background) / 0.6) 40%, transparent 100%)",
-                    }}
-                  />
-
-                  {/* Project info */}
-                  <div className="absolute bottom-4 left-4 right-4 z-20">
-                    <span className="text-xs sm:text-sm text-primary font-medium uppercase tracking-wider">
-                      {project.category}
-                    </span>
-                    <h4 className="text-base sm:text-xl font-bold text-foreground mt-1">
-                      {project.title}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1 line-clamp-2">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  {/* Link indicator */}
-                  {project.link && isCurrent && (
-                    <div className="absolute top-4 right-4 w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                      <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Navigation dots - Right side */}
-        <div className="absolute right-2 sm:right-6 md:right-10 top-1/2 flex -translate-y-1/2 flex-col gap-2 sm:gap-3 z-30">
-          {projects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-2 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "h-6 sm:h-8 bg-primary"
-                  : "h-2 bg-foreground/30 hover:bg-foreground/50"
-              }`}
-              aria-label={`Ir para projeto ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Counter - Left side */}
-        <div className="absolute left-2 sm:left-6 md:left-10 top-1/2 -translate-y-1/2 z-30">
-          <div className="flex flex-col items-center font-mono">
-            <span className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
-              {String(currentIndex + 1).padStart(2, "0")}
-            </span>
-            <div className="my-2 h-6 sm:h-8 w-px bg-foreground/20" />
-            <span className="text-sm sm:text-base text-muted-foreground">
-              {String(projects.length).padStart(2, "0")}
-            </span>
+    <div
+      className={`reveal group h-full ${project.link ? "cursor-pointer" : "cursor-default"}`}
+      style={{ transitionDelay: `${index * 100}ms` }}
+      onClick={handleClick}
+    >
+      <div className="relative overflow-hidden rounded-xl sm:rounded-2xl mb-3 sm:mb-6">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-110"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {project.link && (
+          <div className="absolute bottom-4 right-4 w-12 h-12 bg-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+            <ArrowUpRight className="w-5 h-5 text-primary-foreground" />
           </div>
-        </div>
+        )}
       </div>
-
-      {/* Instruction hint */}
-      <div className="mt-4 sm:mt-6">
-        <div className="flex items-center gap-2 rounded-full bg-secondary/80 backdrop-blur-sm px-4 py-2 text-xs sm:text-sm text-muted-foreground">
-          <ChevronUp className="w-3 h-3 sm:w-4 sm:h-4" />
-          <span className="hidden sm:inline">Scroll ou arraste para navegar</span>
-          <span className="sm:hidden">Arraste para navegar</span>
-          <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4" />
-        </div>
-      </div>
+      
+      <span className="font-montserrat text-sm text-muted-foreground uppercase tracking-wider">
+        {project.category}
+      </span>
+      <h3 className="font-poppins font-bold text-xl text-foreground mt-2 mb-2 group-hover:text-muted-foreground transition-colors">
+        {project.title}
+      </h3>
+      <p className="font-montserrat text-muted-foreground text-sm">
+        {project.description}
+      </p>
     </div>
+  );
+};
+
+// Mobile Sticky Card Component
+const MobileStickyCard = ({
+  i,
+  project,
+  progress,
+  range,
+  targetScale,
+}: {
+  i: number;
+  project: typeof projects[0];
+  progress: ReturnType<typeof useScroll>["scrollYProgress"];
+  range: [number, number];
+  targetScale: number;
+}) => {
+  const container = useRef<HTMLDivElement>(null);
+  const scale = useTransform(progress, range, [1, targetScale]);
+
+  const handleClick = () => {
+    if (project.link) {
+      window.open(project.link, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  return (
+    <div
+      ref={container}
+      className="h-screen flex items-center justify-center sticky top-0"
+    >
+      <motion.div
+        style={{ scale }}
+        className="relative w-[85vw] max-w-[400px] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
+        onClick={handleClick}
+      >
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover"
+        />
+        
+        {/* Gradient overlay */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "linear-gradient(to top, hsl(var(--background) / 0.9) 0%, hsl(var(--background) / 0.4) 40%, transparent 100%)",
+          }}
+        />
+        
+        {/* Project info */}
+        <div className="absolute bottom-4 left-4 right-4 z-10">
+          <span className="text-xs text-primary font-medium uppercase tracking-wider">
+            {project.category}
+          </span>
+          <h4 className="text-lg font-bold text-foreground mt-1">
+            {project.title}
+          </h4>
+          <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Link indicator */}
+        {project.link && (
+          <div className="absolute top-3 right-3 w-9 h-9 bg-primary rounded-full flex items-center justify-center z-10">
+            <ArrowUpRight className="w-4 h-4 text-primary-foreground" />
+          </div>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
+// Mobile Scrolling Animation Component
+const MobileScrollingAnimation = () => {
+  const container = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start start", "end end"],
+  });
+
+  return (
+    <ReactLenis root>
+      <div ref={container} className="relative" style={{ height: `${projects.length * 100}vh` }}>
+        {projects.map((project, i) => {
+          const targetScale = Math.max(0.7, 1 - (projects.length - i - 1) * 0.06);
+          return (
+            <MobileStickyCard
+              key={project.id}
+              i={i}
+              project={project}
+              progress={scrollYProgress}
+              range={[i * (1 / projects.length), 1]}
+              targetScale={targetScale}
+            />
+          );
+        })}
+      </div>
+    </ReactLenis>
   );
 };
 
@@ -298,27 +207,40 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="portfolio" className="section-padding bg-secondary/30">
-      <div className="container-custom">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 lg:mb-16">
-          <span className="reveal font-montserrat text-sm sm:text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
-            Cases
-          </span>
-          <h2 className="reveal font-poppins font-black text-[2.5rem] leading-[1.05] sm:text-4xl md:text-5xl lg:text-6xl text-foreground sm:leading-tight mb-3 sm:mb-6">
-            Startups que
-            <br />
-            <span className="text-gradient">já escalaram.</span>
-          </h2>
-          <p className="reveal font-montserrat text-base sm:text-lg text-muted-foreground">
-            Produtos digitais que geraram tração, receita e crescimento real.
-          </p>
+    <section ref={sectionRef} id="portfolio" className="bg-secondary/30">
+      {/* Header */}
+      <div className="section-padding pb-8 sm:pb-12">
+        <div className="container-custom">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="reveal font-montserrat text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
+              Cases
+            </span>
+            <h2 className="reveal font-poppins font-black text-[2.5rem] leading-[1.05] sm:text-4xl md:text-5xl lg:text-6xl text-foreground sm:leading-tight mb-3 sm:mb-6">
+              Startups que
+              <br />
+              <span className="text-gradient">já escalaram.</span>
+            </h2>
+            <p className="reveal font-montserrat text-base sm:text-lg text-muted-foreground">
+              Produtos digitais que geraram tração, receita e crescimento real.
+            </p>
+          </div>
         </div>
+      </div>
 
-        {/* Vertical Image Stack */}
-        <div className="reveal">
-          <VerticalImageStack />
+      {/* Desktop Grid - Hidden on mobile */}
+      <div className="hidden sm:block section-padding pt-0">
+        <div className="container-custom">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {projects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
         </div>
+      </div>
+
+      {/* Mobile Scrolling Animation - Visible only on mobile */}
+      <div className="sm:hidden">
+        <MobileScrollingAnimation />
       </div>
     </section>
   );
