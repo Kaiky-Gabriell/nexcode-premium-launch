@@ -111,7 +111,7 @@ const MobileStickyCard = ({
   return (
     <div
       ref={container}
-      className="h-[70vh] flex items-center justify-center sticky top-[15vh]"
+      className="h-[60vh] flex items-start justify-center sticky top-4 pt-4"
     >
       <motion.div
         style={{ scale }}
