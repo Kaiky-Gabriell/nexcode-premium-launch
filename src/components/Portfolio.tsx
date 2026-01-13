@@ -111,7 +111,7 @@ const MobileStickyCard = ({
   return (
     <div
       ref={container}
-      className="h-screen flex items-center justify-center sticky top-0"
+      className="h-[70vh] flex items-center justify-center sticky top-[15vh]"
     >
       <motion.div
         style={{ scale }}
@@ -166,7 +166,7 @@ const MobileScrollingAnimation = () => {
 
   return (
     <ReactLenis root>
-      <div ref={container} className="relative" style={{ height: `${projects.length * 100}vh` }}>
+      <div ref={container} className="relative" style={{ height: `${projects.length * 65}vh` }}>
         {projects.map((project, i) => {
           const targetScale = Math.max(0.7, 1 - (projects.length - i - 1) * 0.06);
           return (
