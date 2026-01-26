@@ -20,16 +20,18 @@ const AnimatedHero = ({
   const borderRadius = useTransform(scrollYProgress, [0, 1], [0, 40]);
 
   return (
-    <motion.div
-      style={{
-        scale,
-        rotate,
-        borderRadius,
-      }}
-      className="sticky top-0 h-screen w-full origin-center overflow-hidden will-change-transform z-0"
-    >
-      {children}
-    </motion.div>
+    <div className="sticky top-0 h-screen z-0">
+      <motion.div
+        style={{
+          scale,
+          rotate,
+          borderRadius,
+        }}
+        className="h-full w-full origin-center overflow-hidden will-change-transform"
+      >
+        {children}
+      </motion.div>
+    </div>
   );
 };
 
@@ -49,8 +51,9 @@ const AnimatedNextSection = ({
         scale,
         rotate,
       }}
-      className="relative w-full origin-center will-change-transform z-10 bg-background"
+      className="relative w-full origin-center will-change-transform z-10 bg-background -mt-[100vh]"
     >
+      <div className="h-screen" /> {/* Spacer to cover the hero during scroll */}
       {children}
     </motion.div>
   );
