@@ -20,7 +20,7 @@ const AnimatedHero = ({
   const borderRadius = useTransform(scrollYProgress, [0, 1], [0, 40]);
 
   return (
-    <div className="sticky top-0 h-screen z-0">
+    <div className="sticky top-0 h-screen z-0 bg-secondary/30">
       <motion.div
         style={{
           scale,
