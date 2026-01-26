@@ -99,10 +99,10 @@ const Portfolio = () => {
   };
 
   return (
-    <section ref={sectionRef} id="portfolio" className="section-padding bg-secondary/30">
+    <section ref={sectionRef} id="portfolio" className="py-12 sm:py-16 bg-secondary/30">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
           <span className="reveal font-montserrat text-sm uppercase tracking-widest text-muted-foreground mb-2 sm:mb-4 block">
             Cases
           </span>
@@ -178,7 +178,7 @@ const Portfolio = () => {
         </div>
 
         {/* Navigation Controls */}
-        <div className="flex justify-center items-center gap-4 mt-6 sm:mt-8">
+        <div className="flex justify-center items-center gap-4 mt-4 sm:mt-6">
           <button
             onClick={scrollPrev}
             className="w-9 h-9 sm:w-10 sm:h-10 bg-background border border-border rounded-full flex items-center justify-center shadow-sm hover:bg-secondary transition-colors"
