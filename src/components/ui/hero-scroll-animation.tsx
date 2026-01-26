@@ -13,15 +13,22 @@ interface SectionProps {
   children: ReactNode;
 }
 
-const Section1: React.FC<SectionProps> = ({ scrollYProgress, children }) => {
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
-  
+const HeroSection: React.FC<SectionProps> = ({ scrollYProgress, children }) => {
+  // Only scale - no rotation, no opacity changes
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
+
   return (
-    <div className="sticky top-0 h-screen z-0">
+    <div 
+      className="sticky top-0 h-screen overflow-hidden"
+      style={{ zIndex: 1 }}
+    >
       <motion.div
-        style={{ scale, rotate }}
-        className="h-full w-full origin-center"
+        style={{ 
+          scale,
+          // Ensure hero stays fully opaque
+          opacity: 1,
+        }}
+        className="h-full w-full origin-center will-change-transform"
       >
         {children}
       </motion.div>
@@ -29,14 +36,20 @@ const Section1: React.FC<SectionProps> = ({ scrollYProgress, children }) => {
   );
 };
 
-const Section2: React.FC<SectionProps> = ({ scrollYProgress, children }) => {
-  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
+const NextSection: React.FC<SectionProps> = ({ scrollYProgress, children }) => {
+  // Subtle scale animation for premium feel
+  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
 
   return (
     <motion.div
-      style={{ scale, rotate }}
-      className="relative h-full w-full origin-center z-10"
+      style={{ 
+        scale,
+        // Ensure section is fully opaque
+        opacity: 1,
+      }}
+      className="relative w-full origin-center will-change-transform bg-background"
+      // z-index: 2 to stack above hero
+      // Using inline style for explicit z-index control
     >
       {children}
     </motion.div>
@@ -54,13 +67,19 @@ export const HeroScrollAnimation = ({
   });
 
   return (
+    // Container has NO background - sections have their own backgrounds
     <div ref={container} className="relative h-[200vh]">
-      <Section1 scrollYProgress={scrollYProgress}>
+      <HeroSection scrollYProgress={scrollYProgress}>
         {heroContent}
-      </Section1>
-      <Section2 scrollYProgress={scrollYProgress}>
-        {nextSectionContent}
-      </Section2>
+      </HeroSection>
+      <div 
+        className="relative"
+        style={{ zIndex: 2 }}
+      >
+        <NextSection scrollYProgress={scrollYProgress}>
+          {nextSectionContent}
+        </NextSection>
+      </div>
     </div>
   );
 };
