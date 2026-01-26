@@ -26,7 +26,7 @@ const AnimatedHero = ({
         rotate,
         borderRadius,
       }}
-      className="sticky top-0 h-screen w-full origin-center overflow-hidden will-change-transform"
+      className="sticky top-0 h-screen w-full origin-center overflow-hidden will-change-transform z-0"
     >
       {children}
     </motion.div>
@@ -40,18 +40,16 @@ const AnimatedNextSection = ({
   scrollYProgress: MotionValue<number>;
   children: ReactNode;
 }) => {
-  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [3, 0]);
-  const y = useTransform(scrollYProgress, [0, 1], ["5%", "0%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [2, 0]);
 
   return (
     <motion.div
       style={{
         scale,
         rotate,
-        y,
       }}
-      className="relative w-full origin-center will-change-transform"
+      className="relative w-full origin-center will-change-transform z-10 bg-background"
     >
       {children}
     </motion.div>
