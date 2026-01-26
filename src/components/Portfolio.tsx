@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
-import GalleryHoverCarousel, { type GalleryHoverCarouselItem } from "@/components/ui/gallery-hover-carousel";
+import { motion, useScroll, useTransform } from "framer-motion";
+import ReactLenis from "lenis/react";
 
 import portfolioCardapio from "@/assets/portfolio-cardapio.png";
 import portfolioAcademia from "@/assets/portfolio-academia.png";
@@ -9,50 +10,50 @@ import portfolioAutomacoes from "@/assets/portfolio-automacoes.png";
 
 const projects = [
   {
-    id: "1",
+    id: 1,
     title: "Pronto Pizza",
     category: "Cardápio Digital",
-    summary: "Cardápio digital interativo para pizzaria com navegação intuitiva",
+    description: "Cardápio digital interativo para pizzaria com navegação intuitiva",
     image: portfolioCardapio,
-    url: "https://preview--pronto-pizza.lovable.app/",
+    link: "https://preview--pronto-pizza.lovable.app/",
   },
   {
-    id: "2",
+    id: 2,
     title: "Elevati Fit",
     category: "Landing Page",
-    summary: "Landing page de alta conversão para academia de fitness",
+    description: "Landing page de alta conversão para academia de fitness",
     image: portfolioAcademia,
-    url: "https://preview--elevati-fit-showcase.lovable.app/",
+    link: "https://preview--elevati-fit-showcase.lovable.app/",
   },
   {
-    id: "3",
+    id: 3,
     title: "La Chapa Dash",
     category: "Dashboard",
-    summary: "Dashboard completo para gestão de lanchonete",
+    description: "Dashboard completo para gestão de lanchonete",
     image: portfolioDashboard,
-    url: "https://preview--lachapa-dash.lovable.app/",
+    link: "https://preview--lachapa-dash.lovable.app/",
   },
   {
-    id: "4",
+    id: 4,
     title: "String Automações",
     category: "Automação",
-    summary: "Sistema de automações e workflows para otimização de processos",
+    description: "Sistema de automações e workflows para otimização de processos",
     image: portfolioAutomacoes,
-    url: "https://wa.me/message/Z3CKX7WEX2ZCJ1",
+    link: "https://wa.me/message/Z3CKX7WEX2ZCJ1",
   },
 ];
 
 // Desktop Project Card Component
 const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
   const handleClick = () => {
-    if (project.url) {
-      window.open(project.url, "_blank", "noopener,noreferrer");
+    if (project.link) {
+      window.open(project.link, "_blank", "noopener,noreferrer");
     }
   };
 
   return (
     <div
-      className={`reveal group h-full ${project.url ? "cursor-pointer" : "cursor-default"}`}
+      className={`reveal group h-full ${project.link ? "cursor-pointer" : "cursor-default"}`}
       style={{ transitionDelay: `${index * 100}ms` }}
       onClick={handleClick}
     >
@@ -64,7 +65,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        {project.url && (
+        {project.link && (
           <div className="absolute bottom-4 right-4 w-12 h-12 bg-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
             <ArrowUpRight className="w-5 h-5 text-primary-foreground" />
           </div>
@@ -78,9 +79,109 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         {project.title}
       </h3>
       <p className="font-montserrat text-muted-foreground text-sm">
-        {project.summary}
+        {project.description}
       </p>
     </div>
+  );
+};
+
+// Mobile Sticky Card Component
+const MobileStickyCard = ({
+  i,
+  project,
+  progress,
+  range,
+  targetScale,
+}: {
+  i: number;
+  project: typeof projects[0];
+  progress: ReturnType<typeof useScroll>["scrollYProgress"];
+  range: [number, number];
+  targetScale: number;
+}) => {
+  const container = useRef<HTMLDivElement>(null);
+  const scale = useTransform(progress, range, [1, targetScale]);
+
+  const handleClick = () => {
+    if (project.link) {
+      window.open(project.link, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  return (
+    <div
+      ref={container}
+      className="h-[60vh] flex items-start justify-center sticky top-4 pt-4"
+    >
+      <motion.div
+        style={{ scale }}
+        className="relative w-[85vw] max-w-[400px] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
+        onClick={handleClick}
+      >
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover"
+        />
+        
+        {/* Gradient overlay */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "linear-gradient(to top, hsl(var(--background) / 0.9) 0%, hsl(var(--background) / 0.4) 40%, transparent 100%)",
+          }}
+        />
+        
+        {/* Project info */}
+        <div className="absolute bottom-4 left-4 right-4 z-10">
+          <span className="text-xs text-primary font-medium uppercase tracking-wider">
+            {project.category}
+          </span>
+          <h4 className="text-lg font-bold text-foreground mt-1">
+            {project.title}
+          </h4>
+          <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Link indicator */}
+        {project.link && (
+          <div className="absolute top-3 right-3 w-9 h-9 bg-primary rounded-full flex items-center justify-center z-10">
+            <ArrowUpRight className="w-4 h-4 text-primary-foreground" />
+          </div>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
+// Mobile Scrolling Animation Component
+const MobileScrollingAnimation = () => {
+  const container = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start start", "end end"],
+  });
+
+  return (
+    <ReactLenis root>
+      <div ref={container} className="relative" style={{ height: `${projects.length * 65}vh` }}>
+        {projects.map((project, i) => {
+          const targetScale = Math.max(0.7, 1 - (projects.length - i - 1) * 0.06);
+          return (
+            <MobileStickyCard
+              key={project.id}
+              i={i}
+              project={project}
+              progress={scrollYProgress}
+              range={[i * (1 / projects.length), 1]}
+              targetScale={targetScale}
+            />
+          );
+        })}
+      </div>
+    </ReactLenis>
   );
 };
 
@@ -104,16 +205,6 @@ const Portfolio = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  // Convert projects to carousel format
-  const carouselItems: GalleryHoverCarouselItem[] = projects.map((p) => ({
-    id: p.id,
-    title: p.title,
-    summary: p.summary,
-    url: p.url,
-    image: p.image,
-    category: p.category,
-  }));
 
   return (
     <section ref={sectionRef} id="portfolio" className="bg-secondary/30">
@@ -147,9 +238,9 @@ const Portfolio = () => {
         </div>
       </div>
 
-      {/* Mobile Carousel - Visible only on mobile */}
+      {/* Mobile Scrolling Animation - Visible only on mobile */}
       <div className="sm:hidden">
-        <GalleryHoverCarousel items={carouselItems} showHeader={false} />
+        <MobileScrollingAnimation />
       </div>
     </section>
   );
