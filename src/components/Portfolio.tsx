@@ -177,20 +177,39 @@ const Portfolio = () => {
           </button>
         </div>
 
-        {/* Dots Indicator */}
-        <div className="flex justify-center gap-2 mt-6 sm:mt-8">
-          {projects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => emblaApi?.scrollTo(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === selectedIndex
-                  ? "w-6 bg-primary"
-                  : "bg-foreground/20 hover:bg-foreground/40"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+        {/* Navigation Controls */}
+        <div className="flex justify-center items-center gap-4 mt-6 sm:mt-8">
+          <button
+            onClick={scrollPrev}
+            className="w-9 h-9 sm:w-10 sm:h-10 bg-background border border-border rounded-full flex items-center justify-center shadow-sm hover:bg-secondary transition-colors"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-foreground" />
+          </button>
+          
+          {/* Dots */}
+          <div className="flex gap-2">
+            {projects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => emblaApi?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === selectedIndex
+                    ? "w-6 bg-primary"
+                    : "bg-foreground/20 hover:bg-foreground/40"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={scrollNext}
+            className="w-9 h-9 sm:w-10 sm:h-10 bg-background border border-border rounded-full flex items-center justify-center shadow-sm hover:bg-secondary transition-colors"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-foreground" />
+          </button>
         </div>
       </div>
     </section>
