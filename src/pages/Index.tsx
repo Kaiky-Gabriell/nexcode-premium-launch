@@ -7,13 +7,16 @@ import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import { HeroScrollAnimation } from "@/components/ui/hero-scroll-animation";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <Hero />
-      <About />
+      <HeroScrollAnimation
+        heroContent={<Hero />}
+        nextSectionContent={<About />}
+      />
       <Services />
       <Process />
       <Portfolio />
