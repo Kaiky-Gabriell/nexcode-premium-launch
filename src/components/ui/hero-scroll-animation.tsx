@@ -18,7 +18,7 @@ const Section1: React.FC<SectionProps> = ({ scrollYProgress, children }) => {
   const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
   
   return (
-    <div className="sticky top-0 h-screen">
+    <div className="sticky top-0 h-screen z-0">
       <motion.div
         style={{ scale, rotate }}
         className="h-full w-full origin-center"
@@ -36,7 +36,7 @@ const Section2: React.FC<SectionProps> = ({ scrollYProgress, children }) => {
   return (
     <motion.div
       style={{ scale, rotate }}
-      className="relative h-full w-full origin-center"
+      className="relative h-full w-full origin-center z-10"
     >
       {children}
     </motion.div>
