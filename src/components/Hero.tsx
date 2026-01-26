@@ -9,7 +9,7 @@ const Hero = () => {
     <section 
       id="hero"
       ref={revealRef}
-      className="relative overflow-hidden bg-black h-screen flex flex-col items-center justify-center py-16 pt-24 sm:pt-28"
+      className="relative overflow-hidden bg-black min-h-screen flex flex-col items-center justify-center py-16 pt-24 sm:pt-28"
     >
       {/* Animated mesh gradient background */}
       <HeroBackground className="absolute inset-0 z-0" />
