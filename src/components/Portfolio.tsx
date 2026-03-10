@@ -14,7 +14,7 @@ const projects = [
     category: "Cardápio Digital",
     description: "Cardápio digital interativo para pizzaria com navegação intuitiva",
     image: portfolioCardapio,
-    link: "https://preview--pronto-pizza.lovable.app/",
+    link: "https://pronto-pizza.lovable.app",
   },
   {
     id: 2,
