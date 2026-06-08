@@ -238,3 +238,7 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground));
 }
+
+#lovable-badge {
+  display: none !important;
+}
