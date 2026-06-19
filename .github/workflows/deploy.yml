@@ -31,8 +31,24 @@ jobs:
       - name: Build
         run: bun run build
 
+      - name: Validate GitHub Pages artifact
+        shell: bash
+        run: |
+          repo_name="${GITHUB_REPOSITORY#*/}"
+          if [[ "$repo_name" == *.github.io ]]; then
+            base_path="/assets/"
+          else
+            base_path="/${repo_name}/assets/"
+          fi
+          test -f dist/index.html
+          test -d dist/assets
+          ! grep -q 'src="/src/main.tsx"' dist/index.html
+          grep -q "$base_path" dist/index.html
+
       - name: SPA fallback (copy index.html to 404.html)
-        run: cp dist/index.html dist/404.html
+        run: |
+          cp dist/index.html dist/404.html
+          touch dist/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
