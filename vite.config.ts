@@ -4,7 +4,9 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 const githubRepositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1];
-const productionBase = githubRepositoryName ? `/${githubRepositoryName}/` : "/";
+const productionBase = githubRepositoryName && !githubRepositoryName.endsWith(".github.io")
+  ? `/${githubRepositoryName}/`
+  : "/";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({

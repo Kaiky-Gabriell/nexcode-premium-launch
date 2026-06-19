@@ -35,10 +35,15 @@ jobs:
         shell: bash
         run: |
           repo_name="${GITHUB_REPOSITORY#*/}"
+          if [[ "$repo_name" == *.github.io ]]; then
+            base_path="/assets/"
+          else
+            base_path="/${repo_name}/assets/"
+          fi
           test -f dist/index.html
           test -d dist/assets
           ! grep -q 'src="/src/main.tsx"' dist/index.html
-          grep -q "/${repo_name}/assets/" dist/index.html
+          grep -q "$base_path" dist/index.html
 
       - name: SPA fallback (copy index.html to 404.html)
         run: |
