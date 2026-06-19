@@ -21,6 +21,25 @@ export function NavBar({ items, className }: NavBarProps) {
   const [isMobile, setIsMobile] = useState(false)
   const [isDarkSection, setIsDarkSection] = useState(false)
 
+  const scrollToTarget = useCallback((url: string) => {
+    const hash = url.startsWith("#") ? url.slice(1) : ""
+    const targetTop = hash
+      ? document.getElementById(hash)?.getBoundingClientRect().top ?? 0
+      : -window.scrollY
+    const destination = Math.max(0, window.scrollY + targetTop)
+
+    window.lenis?.stop()
+    window.scrollTo({ top: destination, left: 0, behavior: "auto" })
+    window.lenis?.start()
+
+    const nextUrl = hash
+      ? `${window.location.pathname}${window.location.search}#${hash}`
+      : `${window.location.pathname}${window.location.search}`
+
+    history.replaceState(null, "", nextUrl)
+    window.dispatchEvent(new Event("scroll"))
+  }, [])
+
   const checkDarkSection = useCallback(() => {
     // Get the navbar position (center point)
     // On mobile (bottom navbar), check near the bottom of the screen
@@ -98,17 +117,7 @@ export function NavBar({ items, className }: NavBarProps) {
               onClick={(e) => {
                 e.preventDefault()
                 setActiveTab(item.name)
-                const hash = item.url.startsWith("#") ? item.url.slice(1) : ""
-                if (!hash) {
-                  window.scrollTo({ top: 0, behavior: "smooth" })
-                  history.replaceState(null, "", window.location.pathname + window.location.search)
-                } else {
-                  const el = document.getElementById(hash)
-                  if (el) {
-                    el.scrollIntoView({ behavior: "smooth", block: "start" })
-                    history.replaceState(null, "", `#${hash}`)
-                  }
-                }
+                scrollToTarget(item.url)
               }}
               className={cn(
                 "relative cursor-pointer font-semibold rounded-full transition-colors",

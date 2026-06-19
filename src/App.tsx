@@ -10,6 +10,12 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+declare global {
+  interface Window {
+    lenis?: Lenis;
+  }
+}
+
 const App = () => {
   useEffect(() => {
     const lenis = new Lenis({
@@ -17,14 +23,22 @@ const App = () => {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
+    window.lenis = lenis;
 
+    let rafId = 0;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+      if (window.lenis === lenis) {
+        delete window.lenis;
+      }
+    };
   }, []);
 
   return (
