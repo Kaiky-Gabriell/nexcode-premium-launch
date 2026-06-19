@@ -3,11 +3,12 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
+const githubRepositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1];
+const productionBase = githubRepositoryName ? `/${githubRepositoryName}/` : "/";
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Em dev usamos "/" (preview do Lovable). No build de produção (GitHub Pages),
-  // o site é servido em /nexcode-premium-launch/, então precisamos desse base.
-  base: mode === "development" ? "/" : "/nexcode-premium-launch/",
+  base: mode === "development" ? "/" : productionBase,
   server: {
     host: "::",
     port: 8080,
