@@ -95,7 +95,21 @@ export function NavBar({ items, className }: NavBarProps) {
             <a
               key={item.name}
               href={item.url}
-              onClick={() => setActiveTab(item.name)}
+              onClick={(e) => {
+                e.preventDefault()
+                setActiveTab(item.name)
+                const hash = item.url.startsWith("#") ? item.url.slice(1) : ""
+                if (!hash) {
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                  history.replaceState(null, "", window.location.pathname + window.location.search)
+                } else {
+                  const el = document.getElementById(hash)
+                  if (el) {
+                    el.scrollIntoView({ behavior: "smooth", block: "start" })
+                    history.replaceState(null, "", `#${hash}`)
+                  }
+                }
+              }}
               className={cn(
                 "relative cursor-pointer font-semibold rounded-full transition-colors",
                 // Responsive text and padding
