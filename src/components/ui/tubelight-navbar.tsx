@@ -69,16 +69,24 @@ export function NavBar({ items, className }: NavBarProps) {
       checkDarkSection()
     }
 
+    // Coalesce scroll events into at most one check per animation frame so
+    // this doesn't add extra main-thread work while the page is scrolling.
+    let ticking = false
     const handleScroll = () => {
-      checkDarkSection()
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        checkDarkSection()
+        ticking = false
+      })
     }
 
     handleResize()
     checkDarkSection()
-    
+
     window.addEventListener("resize", handleResize)
     window.addEventListener("scroll", handleScroll, { passive: true })
-    
+
     return () => {
       window.removeEventListener("resize", handleResize)
       window.removeEventListener("scroll", handleScroll)

@@ -2,10 +2,10 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 
-import portfolioCardapio from "@/assets/portfolio-cardapio.png";
-import portfolioAcademia from "@/assets/portfolio-academia.png";
-import portfolioDashboard from "@/assets/portfolio-dashboard.png";
-import portfolioAutomacoes from "@/assets/portfolio-automacoes.png";
+import portfolioCardapio from "@/assets/portfolio-cardapio.webp";
+import portfolioAcademia from "@/assets/portfolio-academia.webp";
+import portfolioDashboard from "@/assets/portfolio-dashboard.webp";
+import portfolioAutomacoes from "@/assets/portfolio-automacoes.webp";
 
 const projects = [
   {

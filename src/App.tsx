@@ -18,6 +18,14 @@ declare global {
 
 const App = () => {
   useEffect(() => {
+    // Smooth-scroll (Lenis) only makes sense for mouse-wheel input.
+    // On touch devices its constant rAF loop competes with native
+    // momentum scrolling and is a major source of mobile jank, so we
+    // skip it there and rely on the OS's own (already smooth) scrolling.
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isCoarsePointer || prefersReducedMotion) return;
+
     const lenis = new Lenis({
       duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
